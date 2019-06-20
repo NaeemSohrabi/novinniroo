@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+
+{% block title %}Brand{% endblock %}
+
+{% block body %}
+
+    {{ include('_templates/header.html') }}
+
+
+    <section class="brand-slide-show" style="display: none">
+        <div class="container">
+            <div class="brand-slide-show-wrapper">
+                <div class="slide-show">
+                    <div class="one-time">
+                        {% for media in medias %}
+                            <img src="{{ url('uploads') }}/{{ media.file }}" alt="">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="brand-info">
+        <div class="container">
+            <div class="row">
+                <div class="logo col-sm-3">
+                    <div class="services-image">
+                        <img src="{{ url('uploads') }}/{{ brand.brand_logo }}" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="brand-text">
+                        <div class="brand-title">{{ brand.title }}</div>
+                        <div class="brand-sub">{{ brand.description|raw }}</div>
+                    </div>
+                </div>
+            </div>
+
+
+    </section>
+
+    <section class="brand-product-slide-show hidden-xs" style="display: none">
+        <div class="container">
+            <div class="col-sm-12">
+                <div class="product-slide-show row">
+
+                    {% for product in products %}
+                        <div class="col-sm-3 text-center">
+                            <div class="item">
+                                <a href="{{ url('product') }}/{{ product.id }}/review">
+                                    <img class="img-responsive" src="{{ url('uploads') }}/{{ product.cover }}" alt="">
+                                </a>
+                            </div>
+                            <a href="{{ url('product') }}/{{ product.id }}/review"><div class="title">{{ product.title }}</div></a>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="brand-product-slide-show visible-xs" style="display: none">
+        <div class="container">
+            <div class="col-sm-12">
+                <div class="for-responsive row">
+
+                    {% for product in products %}
+                        <div class="col-sm-3 text-center">
+                            <div class="item">
+                                <a href="{{ url('product') }}/{{ product.id }}/review">
+                                    <img class="img-responsive" src="{{ url('uploads') }}/{{ product.cover }}" alt="">
+                                </a>
+                            </div>
+                            <a href="{{ url('product') }}/{{ product.id }}/review"><div class="title">{{ product.title }}</div></a>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="brand-customers">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    {% for branch in branches %}
+                        <div class="col-sm-2 col-xs-3">
+                            <div class="branch-image">
+                                <img src="{{ url('uploads') }}/{{ branch.image }}" alt="">
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-sm-3">
+                    <div class="customers-title">Global Presence</div>
+                    <div class="customers-sub">{{ brand.branch_text|raw }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ include('_templates/footer.html') }}
+
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        $('.one-time').slick({
+            dots: true,
+            infinite: true,
+            speed: 600,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            autoplay: true,
+            arrows: false,
+            slide:''
+
+        });
+    </script>
+
+    <script>
+    $('.product-slide-show').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            rows: 2,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            slide:'4'
+
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+    </script>
+    <script>
+        $('.for-responsive').slick({
+            dots: true,
+            infinite: true,
+            speed: 600,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            autoplay: true,
+            arrows: false,
+            slide:''
+
+        });
+    </script>
+
+    <script>
+        $('.brand-slide-show').show();
+        $('.brand-product-slide-show').show();
+
+    </script>
+{% endblock %}

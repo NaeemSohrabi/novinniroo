@@ -1,0 +1,134 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Menu Insert{% endblock %}
+
+
+{% block body %}
+<!--Content Editor-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">افزودن منو</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+اطلاعات منو
+            </div>
+            <div class="panel-body">
+                <div id="menu" class="tabcontent active" style="display: block;">
+                    <form action="/admin/menu/store" class="form-horizontal" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" class="form-control" name="id" value="contact_info">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">نام انگلیسی منو: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="title" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">نام فارسی منو: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="fa_title" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">لینک: </label>
+                            <div class="col-sm-6">
+                                <input type="text" id="manual" class="form-control" name="link"  style="text-align: left; direction: ltr">
+                                <select name="link" id="product-list" class="form-control" disabled style="display: none">
+                                    <option value="">انتخاب محصول ...</option>
+                                    {% for value in products %}
+                                        <option value="{{ url('product') }}/{{ value.id }}/review">{{ value.title }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select name="link" id="brand-list" class="form-control" disabled style="display: none">
+                                    <option value="">انتخاب برند ...</option>
+                                    {% for value in brands %}
+                                        <option value="{{ url('brand') }}/{{ value.id }}/review">{{ value.title }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select name="link" id="page-list" class="form-control" disabled style="display: none">
+                                    <option value="">انتخاب صفحه ...</option>
+                                    {% for value in pages %}
+                                        <option value="{{ url('page') }}/review/{{ value.slug }}">{{ value.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="manual-link">انتخاب دستی </label><input type="radio" id="manual-link" name="list">
+                                <label for="product-link">انتخاب محصول </label><input type="radio" id="product-link" name="list">
+                                <label for="brand-link">انتخاب برند </label><input type="radio" id="brand-link" name="list">
+                                <label for="page-link">انتخاب صفحه </label><input type="radio" id="page-link" name="list">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"> والد: </label>
+                            <div class="col-sm-4">
+                                <select name="parent_id" id="" class="form-control">
+                                    <option value="0">خالی ...</option>
+                                    {% for value in all_menu %}
+                                        <option value="{{ value.id }}" >{{value.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">ترتیب: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="sort" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-sm-offset-2">
+                                <button type="submit" class="btn btn-primary">بارگذاری</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('.description').summernote({
+            height: 200
+        });
+
+        $('#page-link').click(function () {
+            if ($('#page-link').is(':checked')) {
+                $('#brand-list, #manual, #product-list').attr('disabled', true).hide();
+                $('#page-list').attr('disabled', false).show();
+            }
+        });
+
+        $('#product-link').click(function () {
+            if ($('#product-link').is(':checked')) {
+                $('#brand-list, #manual, #page-list').attr('disabled', true).hide();
+                $('#product-list').attr('disabled', false).show();
+            }
+        });
+
+        $('#brand-link').click(function () {
+            if ($('#brand-link').is(':checked')) {
+                $('#product-list, #manual, #page-list').attr('disabled', true).hide();
+                $('#brand-list').attr('disabled', false).show();
+            }
+        });
+
+        $('#manual-link').click(function () {
+            if ($('#manual-link').is(':checked')) {
+                $('#brand-list, #product-list, #page-list').attr('disabled', true).hide();
+                $('#manual').attr('disabled', false).show();
+            }
+        });
+    });
+
+</script>
+
+
+{% endblock %}

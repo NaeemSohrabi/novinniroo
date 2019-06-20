@@ -1,0 +1,71 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Serivce List{% endblock %}
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header pull-left">
+                <a href="{{url('admin/service/insert')}}" class="btn btn-success"><i class="fa fa-edit fa-lg"></i> افزودن سرویس جدید</a>
+            </div>
+        </div>
+
+
+        <!-- /.panel -->
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <!-- /.panel-heading -->
+                <div class="text-center" >
+                    <div class="panel-heading " style="background-color: #94C9EE;">لیست سرویس ها</div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>عنوان</th>
+                                <th>وضعیت</th>
+                                <th>ترتیب</th>
+                                <th>عکس</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if services|length > 0 %}
+                                {% for service in services %}
+                                    <tr>
+                                        <td>{{ service.id }}</td>
+                                        <td>{{ service.fa_title }} / {{ service.title }}</td>
+                                        <td>{{ service.status }} </td>
+                                        <td>{{ service.priority }} </td>
+                                        <td><img src="{{ url('uploads') }}/{{ service.image }}" alt="" width="100"></td>
+
+                                        <td>
+                                            <a href="{{ url('admin/service/edit') }}/{{ service.id }}" class="btn btn-primary">ویرایش</a>
+                                            <a href="{{ url('admin/service/delete') }}/{{ service.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                سرویس موجود نیست
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+

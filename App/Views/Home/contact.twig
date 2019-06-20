@@ -1,0 +1,370 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock %}
+{% block body %}
+    {{ include('_templates/header.html') }}
+
+
+
+    <section class="world">
+        <div class="container">
+            <img src="/images/world.png" alt="">
+            {#<div id="worldmap" class="worldmap"></div>#}
+        </div>
+    </section>
+
+
+    <section class="central-office contact-info">
+        <div class="container">
+            <div class="contact-info-wrapper">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="content">
+                            <ul>
+                                <li class="title">Central Office Address:</li>
+                                <li class="address">{{ elements.contact_info.address }}</li>
+                                <li class="telephone aaa">Tel: {{ elements.contact_info.telephone }}</li>
+                                <li class="fax aaa">Fax: {{ elements.contact_info.fax }}</li>
+                                <li class="cell">Cell: {{ elements.contact_info.cell }}</li>
+                                <li class="email">Email: {{ elements.contact_info.email }}</li>
+                                <li class="web"><a href="">Web: {{ elements.contact_info.web }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="centralmap" class="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="muscat-office contact-info">
+        <div class="container">
+            <div class="contact-info-wrapper">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="content">
+                            <ul>
+                                <li class="title">Muscat Office Address:</li>
+                                <li class="address">{{ elements.om_contact_info.om_address }}</li>
+                                <li class="telephone aaa">Tel: {{ elements.om_contact_info.om_telephone }}</li>
+                                <li class="fax aaa">Fax: {{ elements.om_contact_info.om_fax }}</li>
+                                <li class="cell">Cell: {{ elements.om_contact_info.om_cell }}</li>
+                                <li class="email">Email: {{ elements.om_contact_info.om_email }}</li>
+                                <li class="web"><a href="">Web: {{ elements.om_contact_info.om_web }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="muscatmap" class="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="london-office contact-info">
+        <div class="container">
+            <div class="contact-info-wrapper">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="content">
+                            <ul>
+                                <li class="title">London Office Address:</li>
+                                <li class="address">{{ elements.ln_contact_info.ln_address }}</li>
+                                <li class="telephone aaa">Tel: {{ elements.ln_contact_info.ln_telephone }}</li>
+                                <li class="fax aaa">Fax: {{ elements.ln_contact_info.ln_fax }}</li>
+                                <li class="cell">Cell:{{ elements.ln_contact_info.ln_cell }}</li>
+                                <li class="email">Email: {{ elements.ln_contact_info.ln_email }}</li>
+                                <li class="web"><a href="">Web: {{ elements.ln_contact_info.ln_web }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="londonmap" class="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="title">Contact Us Form:</div>
+                    <div class="request">You can contact us through this form</div>
+                    <div class="request">Please enter your contact information and request</div>
+                    <div class="request">Our colleagues will contact you as soon as possible</div>
+                    <div class="image hidden-xs">
+                        <img src="/images/telecontact.png" class="img-responsive center-block">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <form action="contact/email" method="post" required class="" id="contact-form"
+                          onsubmit="return false;">
+                        <div class="form-group">
+                            <input type="text" name="name" required class="form-control input-control"
+                                   id="exampleInputEmail1"
+                                   placeholder="Name/Surname">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="tel" required class="form-control input-control"
+                                   id="exampleInputEmail1"
+                                   placeholder="Tel">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" required class="form-control input-control"
+                                   id="exampleInputEmail1"
+                                   placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <select name="department" id="" class="form-control">
+                                {% for name, email in departments %}
+                                    <option value="{{ email }}">{{ name }}</option>
+                                {% endfor %}
+                                {#<option value="dooor">oops</option>#}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Message" name="message"
+                                      required></textarea>
+                        </div>
+                        <div class="row">
+                            {#<div class="col-sm-4">#}
+                            {#<div class="form-group">#}
+                            {#<input type="text" name="code" class="form-control text-center"#}
+                            {#id="exampleInputEmail1"#}
+                            {#placeholder="Random"></div>#}
+                            {#</div>#}
+                            {#<div class="col-sm-4">#}
+                            {#<div class="form-group">#}
+                            {#<input type="text" name="code" class="form-control text-center"#}
+                            {#id="exampleInputEmail1"#}
+                            {#placeholder="Type the code">#}
+                            {#</div>#}
+                            {#</div>#}
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-send pull-right btn-block" value="SEND">
+                                </div>
+                            </div>
+                            {#<div class="col-sm-4">#}
+                            {#<div class="form-group">#}
+                            {#<input type="image" id="captcha_vms" src="mkcapcha">#}
+                            {#</div>#}
+                            {#</div>#}
+                            {#<div class="col-sm-4">#}
+                            {#<div class="form-group">#}
+                            {#<input type="text" id="result_vms" name="result_vms" value="Type the Code">#}
+                            {#</div>#}
+                            {#</div>#}
+
+                            <div class="col-sm-8 message" style="display: none">
+                                <div class="">Message has been sent successfully.</div>
+                            </div>
+                        </div>
+                        {#<div class="form-group">#}
+                        {#<button type="submit" class="btn btn-send col-sm-3">SEND</button>#}
+                        {#<input type="text" class="form-control text-center col-sm-3" name="code" placeholder="Type the Code">#}
+                        {#</div>#}
+
+                    </form>
+                </div>
+            </div><!--row-->
+        </div><!--container-->
+    </section>
+
+    {#<section class="footer">#}
+    {#<div class="container">#}
+    {#<div class="footer-logo">#}
+    {#<img src="/images/Logo-Header.png" class="img-responsive">#}
+    {#</div>#}
+    {#<div class="left-part">#}
+
+    {#<div id="map" style="height: 170px; width: 87%"></div>#}
+
+    {#<div class="footer-social">#}
+    {#<ul>#}
+    {#<li><a href="#"><i class="icon icon-facebook"></i></a></li>#}
+    {#<li><a href="#"><i class="icon icon-twitter"></i></a></li>#}
+    {#<li><a href="#"><i class="icon icon-google"></i></a></li>#}
+    {#<li><a href="#"><i class="icon icon-linkdin"></i></a></li>#}
+    {#</ul>#}
+    {#</div>#}
+    {#</div>#}
+    {#<div class="footer-address">#}
+    {#<div class="title">Central Office Address:</div>#}
+    {#<div class="address-detail">{{ elements.contact_info.address }}</div>#}
+    {#<div class="telephone">Tel: {{ elements.contact_info.telephone }}</div>#}
+    {#<div class="fax">Fax: {{ elements.contact_info.fax }}</div>#}
+    {#<div class="email">Email: {{ elements.contact_info.email }}</div>#}
+    {#</div>#}
+    {#<div class="footer-agents">#}
+    {#<div class="title">Exclusive Agent</div>#}
+    {#<div class="agent"><a href="https://www.jamesway.com/" target="_blank">JAMESWAY Co.</a></div>#}
+    {#<div class="agent"><a href="http://www.kutlusan.com.tr/" target="_blank">KUTLUSAN Co.</a></div>#}
+    {#<div class="agent"><a href="http://www.yemmak.com/" target="_blank">YEMMAK Co.</a></div>#}
+    {#<div class="agent"><a href="http://www.zorelmachine.com/" target="_blank">ZOREL Co.</a></div>#}
+    {#<div class="agent"><a href="https://www.munters.com/" target="_blank">MUNTERS Co.</a></div>#}
+    {#</div>#}
+    {#<div class="footer-services">#}
+    {#<div class="title">Our Services</div>#}
+    {#<div class="service"><a href="#">Customs service</a></div>#}
+    {#<div class="service"><a href="#">Customers Care</a></div>#}
+    {#<div class="service"><a href="#">Building</a></div>#}
+    {#<div class="service"><a href="#">Poultry & Farming</a></div>#}
+    {#<div class="service"><a href="#">Import & Export</a></div>#}
+    {#</div>#}
+    {#</div>#}
+    {#</section>#}
+    {{ include('_templates/footer.html') }}
+
+
+    {#<section class="contact-socials">#}
+    {#<div class="container">#}
+    {#<div class="row">#}
+    {#<div class="col-sm-4">#}
+    {#<div class="socials">#}
+    {#<ul>#}
+    {#<li><a href="#"><img src="/images/facebook.png" alt=""></a></li>#}
+    {#<li><a href="#"><img src="/images/twitter.png" alt=""></a></li>#}
+    {#<li><a href="#"><img src="/images/google.png" alt=""></a></li>#}
+    {#<li><a href="#"><img src="/images/linkdin.png" alt=""></a></li>#}
+    {#</ul>#}
+    {#</div>#}
+    {#<div class="copy-right">Copy Right © 2017 Novin Niroo Co., All Rights Reserved Artway Co. </div>#}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+    {#</section>#}
+    {% block script %}
+        <script>
+            function initMap() {
+                var uluru1 = {lat: {{ elements.ln_contact_info.ln_lat }}, lng: {{ elements.ln_contact_info.ln_lang }}};
+                var map1 = new google.maps.Map(document.getElementById('londonmap'), {
+                    zoom: 14,
+                    center: uluru1
+                });
+                var marker1 = new google.maps.Marker({
+                    position: uluru1,
+                    map: map1
+                });
+
+                var uluru2 = {lat: {{ elements.contact_info.lat }}, lng: {{ elements.contact_info.lang }}};
+                var map2 = new google.maps.Map(document.getElementById('centralmap'), {
+                    zoom: 14,
+                    center: uluru2
+                });
+                var marker2 = new google.maps.Marker({
+                    position: uluru2,
+                    map: map2
+                });
+
+                var uluru3 = {lat: {{ elements.om_contact_info.om_lat }}, lng: {{ elements.om_contact_info.om_lang }}};
+                var map3 = new google.maps.Map(document.getElementById('muscatmap'), {
+                    zoom: 14,
+                    center: uluru3
+                });
+                var marker3 = new google.maps.Marker({
+                    position: uluru3,
+                    map: map3
+                });
+
+                var uluru4 = {lat: 35.752211, lng: 51.405578};
+                var map4 = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 14,
+                    center: uluru4
+                });
+                var marker4 = new google.maps.Marker({
+                    position: uluru4,
+                    map: map4
+                });
+
+                var broadway = {
+                    info: '<strong>Chipotle on Broadway</strong><br>\
+					5224 N Broadway St<br> Chicago, IL 60640<br>\
+					<a href="https://goo.gl/maps/jKNEDz4SyyH2">Get Directions</a>',
+                    lat: 41.976816,
+                    long: -87.659916
+                };
+
+                var belmont = {
+                    info: '<strong>Chipotle on Belmont</strong><br>\
+					1025 W Belmont Ave<br> Chicago, IL 60657<br>\
+					<a href="https://goo.gl/maps/PHfsWTvgKa92">Get Directions</a>',
+                    lat: 41.939670,
+                    long: -87.655167
+                };
+
+                var sheridan = {
+                    info: '<strong>Chipotle on Sheridan</strong><br>\r\
+					6600 N Sheridan Rd<br> Chicago, IL 60626<br>\
+					<a href="https://goo.gl/maps/QGUrqZPsYp92">Get Directions</a>',
+                    lat: 42.002707,
+                    long: -87.661236
+                };
+
+                var locations = [
+                    [broadway.info, broadway.lat, broadway.long, 0],
+                    [belmont.info, belmont.lat, belmont.long, 1],
+                    [sheridan.info, sheridan.lat, sheridan.long, 2],
+                ];
+
+                var map = new google.maps.Map(document.getElementById('worldmap'), {
+                    zoom: 13,
+                    center: new google.maps.LatLng(41.976816, -87.659916),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+
+                var infowindow = new google.maps.InfoWindow({});
+
+                var marker, i;
+
+                for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                        map: map
+                    });
+
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            infowindow.setContent(locations[i][0]);
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, i));
+                }
+
+            }
+        </script>
+
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4A8JoqZ27Y8JMWuhATa9uciit8eYFTPg&callback=initMap">
+        </script>
+
+        <script>
+            $(document).on('submit', 'form', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/contact/email",
+                    data: $("form").serialize(),
+//                dataType: 'json',
+                    success: function (dataString) {
+                        $('.message').fadeIn();
+                        console.log(dataString);
+                    },
+//                error: function (request, status, error) {
+//                    alert(request.responseText);
+//                }
+                });
+            });
+        </script>
+    {% endblock %}
+
+
+
+{% endblock %}

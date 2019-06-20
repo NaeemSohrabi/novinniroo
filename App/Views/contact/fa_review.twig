@@ -1,0 +1,581 @@
+{% extends "fa_base.twig" %}
+
+{% block title %}ارتباط با ما{% endblock %}
+
+{% block meta_tag %}{{ elements.contactmeta.meta_tag_fa }} {% endblock %}
+{% block meta_description %}{{ elements.contactmeta.meta_description_fa }} {% endblock %}
+
+{% block body %}
+    {{ include('_templates/fa_header.twig') }}
+
+
+
+    <section class="world hidden-xs">
+        <div class="container">
+            {#<div class="world-map-wrapper">#}
+                {#<img src="/images/World-Map.png" alt="">#}
+                {#<div class="oman-pin" href="oman">#}
+                    {#<a href="#oman"><i class="fa fa-map-marker change-color" aria-hidden="true" style="font-size: 20px"></i></a>#}
+                {#</div>#}
+                {#<div class="iran-pin">#}
+                    {#<a href="#iran"><i class="fa fa-map-marker change-color" aria-hidden="true" style="font-size: 25px"></i></a>#}
+                {#</div>#}
+                {#<div class="london-pin">#}
+                    {#<a href="#london"><i class="fa fa-map-marker change-color" aria-hidden="true" style="font-size: 27px"></i></a>#}
+                {#</div>#}
+            {#</div>#}
+            <div id="world" style="width: 100%; height: 500px"></div>
+
+        </div>
+    </section>
+
+
+    {% for index , contact in contacts %}
+
+        <section class="central-office contact-info" id="{{ contact.id }}">
+        <div class="container">
+            <div class="contact-info-wrapper">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contact-data">
+                            <ul>
+                                <li class="title">آدرس دفتر {{ contact.fa_name }}:</li>
+                                <li class="address">{{ contact.fa_address }}</li>
+                                <li class="telephone aaa">تلفن:  {{ contact.phone [10:] }} {{ contact.phone [7:3] }} {{ contact.phone [4:3] }} {{ contact.phone [2:2] }} {{ contact.phone [:2] }}+  </li>
+                                <li class="fax aaa">فکس:  {{ contact.fax [10:] }} {{ contact.fax [7:3] }} {{ contact.fax [4:3] }} {{ contact.fax [2:2] }} {{ contact.fax [:2] }}+ </li>
+                                <li class="cell">موبایل: {{ contact.mobile [10:] }} {{ contact.mobile [8:2] }} {{ contact.mobile [5:3] }} {{ contact.mobile [2:3] }} {{ contact.mobile [:2] }}+</li>
+                                <li class="email">ایمیل: {{ contact.email }}</li>
+                                <li class="web"><a href="">وب: {{ contact.web }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="map-{{ index }}" class="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endfor %}
+
+
+    <section class="contact-form">
+        <div class="container">
+            <div class="contact-form-wrapper">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="title">فرم تماس با ما:</div>
+                        <div class="request">از طریق این فرم می توانید با ما تماس بگیرید</div>
+                        <div class="request">لطفا اطلاعات تماس و درخواست خود را وارد نمایید</div>
+                        <div class="request">همکاران ما به زودی با شما تماس خواهند گرفت</div>
+                        <div class="image hidden-xs">
+                            <img src="/images/telecontact.png" class="img-responsive center-block">
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <form action="contact/email" method="post" required class="" id="contact-form"
+                              onsubmit="return false;">
+                            <div class="form-group">
+                                <input type="text" name="name" required class="form-control input-control"
+                                       id="exampleInputEmail1"
+                                       placeholder="نام / نام خانوادگی">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="tel" required class="form-control input-control"
+                                       id="exampleInputEmail1"
+                                       placeholder="تلفن:">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" required class="form-control input-control"
+                                       id="exampleInputEmail1"
+                                       placeholder="ایمیل:">
+                            </div>
+                            <div class="form-group">
+                                <select name="department" id="" class="form-control">
+                                    {#{% for name, email in departments %}#}
+                                    {#<option value="{{ email }}">{{ name }}</option>#}
+                                    {#{% endfor %}#}
+                                    {% if elements.contact_emails.email_1 is not empty %}<option value="{{ elements.contact_emails.email_1 }}">{{ elements.contact_emails.name_1 }}</option>{% endif %}
+                                    {% if elements.contact_emails.email_2 is not empty %}<option value="{{ elements.contact_emails.email_2 }}">{{ elements.contact_emails.name_2 }}</option>{% endif %}
+                                    {% if elements.contact_emails.email_3 is not empty %}<option value="{{ elements.contact_emails.email_3 }}">{{ elements.contact_emails.name_3 }}</option>{% endif %}
+                                    {% if elements.contact_emails.email_4 is not empty %}<option value="{{ elements.contact_emails.email_4 }}">{{ elements.contact_emails.name_4 }}</option>{% endif %}
+                                    {% if elements.contact_emails.email_5 is not empty %}<option value="{{ elements.contact_emails.email_5 }}">{{ elements.contact_emails.name_5 }}</option>{% endif %}
+                                    {% if elements.contact_emails.email_6 is not empty %}<option value="{{ elements.contact_emails.email_6 }}">{{ elements.contact_emails.name_6 }}</option>{% endif %}
+                                    {% if elements.contact_emails.email_7 is not empty %}<option value="{{ elements.contact_emails.email_7 }}">{{ elements.contact_emails.name_7 }}</option>{% endif %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="متن پیام:" name="message"
+                                      required></textarea>
+                            </div>
+                            <div class="row">
+
+                                {#captcha#}
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+
+                                        <input style="padding: 20px 56px" type="image" src="{{ url('mkcaptcha') }}" class="form-control text-center" id="captcha" name="cap">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="text" name="code" class="form-control text-center"
+                                               id="code"
+                                               placeholder="کد">
+                                    </div>
+                                </div>
+                                {#captcha#}
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-send pull-right btn-block" value="ارسال">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-8 messageok" style="display: none">
+                                    <div class="" style="color: green; ">پیام با موفقیت ارسال شد.</div>
+                                </div>
+                                <div class="col-sm-8 messageerror" style="display: none">
+                                    <div class="" style="color: red;">کد امنیتی وارد شده صحیح نمی باشد!</div>
+                                </div>
+                                <div class="col-sm-8 messageempty" style="display: none">
+                                    <div class="" style="color: darkorange;">کد امنیتی را وارد کنید.</div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div><!--row-->
+
+            </div>
+        </div><!--container-->
+    </section>
+
+    {{ include('_templates/fa_footer.twig') }}
+
+
+
+
+
+{% endblock %}
+
+   {% block script %}
+       <script>
+           function initMap() {
+
+
+               var coords = [];
+               {% for index , location in contacts %}
+               coords[{{ index }}] = {lat: {{ location.lat }} , lng:{{ location.lng}} };
+               {% endfor %}
+               var markers = [];
+               var maps = [];
+               for(var i = 0, length = coords.length; i < length; i++)
+               {
+                   var point = coords[i];
+
+                   var latlng = new google.maps.LatLng(point.lat, point.lng);
+                   maps[i] = new google.maps.Map(document.getElementById('map-' + i), {
+                       zoom: 14,
+                       center: latlng
+                   });
+//
+
+                   markers[i] = new google.maps.Marker({
+                       position: latlng,
+                       map: maps[i]
+                   });
+               }
+
+
+               var uluru = {lat: {{elements.map_attr.lat}} , lng: {{elements.map_attr.lng}}};
+               var map = new google.maps.Map(document.getElementById('map'), {
+                   zoom: 14,
+                   center: uluru
+               });
+               var marker = new google.maps.Marker({
+                   position: uluru,
+                   map: map
+               });
+               initMap3();
+           }
+       </script>
+
+       {#email NOTE#}
+       <script>
+           $(document).on('submit', 'form', function (e) {
+               e.preventDefault();
+               $.ajax({
+                   type: "POST",
+                   url: "/contact/email",
+                   data: $("form").serialize(),
+//                dataType: 'json',
+
+                   success: function (res) {
+                       console.log(res);
+
+                       if (res == 'success')
+                       {
+
+                           $('.messageok').delay(500).fadeIn('normal', function() {
+                               $(this).delay(3500).fadeOut();
+                           });
+
+//                            $('#contact-form').trigger("reload");
+                           $('#captcha').attr('src','http://www.novinniroo.co/mkcaptcha');
+                           $("form")[0].reset();
+                       }
+                       else if (res == 'empty')
+                       {
+                           $('.messageempty').delay(500).fadeIn('normal', function() {
+                               $(this).delay(3500).fadeOut();
+                           });
+                       }
+                       else if (res == 'error')
+                       {
+                           $('.messageerror').delay(500).fadeIn('normal', function() {
+                               $(this).delay(3500).fadeOut();
+                           });
+                       }
+                   }
+//                error: function (request, status, error) {
+//                    alert(request.responseText);
+//                }
+               });
+           });
+
+       </script>
+
+       <script>
+           $('#captcha').click(function(){
+               $('#captcha').attr('src','http://www.novinniroo.co/mkcaptcha');
+           });
+
+       </script>
+
+
+
+
+       <script>
+           function initMap3() {
+               // Basic options for a simple Google Map
+               // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+               var mapOptions = {
+                   // How zoomed in you want the map to start at (always required)
+                   zoom: 2,
+
+                   // The latitude and longitude to center the map (always required)
+                   center: new google.maps.LatLng(35.717859, 51.407191), // New York
+
+                   // How you would like to style the map.
+                   // This is where you would paste any style found on Snazzy Maps.
+                   styles: [
+                       {
+                           "featureType": "all",
+                           "elementType": "labels",
+                           "stylers": [
+                               {
+                                   "visibility": "on"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "all",
+                           "elementType": "labels.text.fill",
+                           "stylers": [
+                               {
+                                   "saturation": 36
+                               },
+                               {
+                                   "color": "#000000"
+                               },
+                               {
+                                   "lightness": 40
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "all",
+                           "elementType": "labels.text.stroke",
+                           "stylers": [
+                               {
+                                   "visibility": "on"
+                               },
+                               {
+                                   "color": "#000000"
+                               },
+                               {
+                                   "lightness": 16
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "all",
+                           "elementType": "labels.icon",
+                           "stylers": [
+                               {
+                                   "visibility": "off"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "administrative",
+                           "elementType": "geometry.fill",
+                           "stylers": [
+                               {
+                                   "color": "#000000"
+                               },
+                               {
+                                   "lightness": 20
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "administrative",
+                           "elementType": "geometry.stroke",
+                           "stylers": [
+                               {
+                                   "color": "#ffffff"
+                               },
+                               {
+                                   "lightness": 50
+                               },
+                               {
+                                   "weight": 1
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "administrative.country",
+                           "elementType": "labels.text.fill",
+                           "stylers": [
+                               {
+                                   "color": "#fff"
+
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "administrative.locality",
+                           "elementType": "labels.text.fill",
+                           "stylers": [
+                               {
+                                   "color": "#c4c4c4"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "administrative.neighborhood",
+                           "elementType": "labels.text.fill",
+                           "stylers": [
+                               {
+                                   "color": "#e5c163"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "landscape",
+                           "elementType": "geometry",
+                           "stylers": [
+                               {
+                                   "color": "#000000"  // front
+                               },
+                               {
+                                   "lightness": 60
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "poi",
+                           "elementType": "geometry",
+                           "stylers": [
+                               {
+                                   "color": "#000000"
+                               },
+                               {
+                                   "lightness": 21
+                               },
+                               {
+                                   "visibility": "on"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "poi.business",
+                           "elementType": "geometry",
+                           "stylers": [
+                               {
+                                   "visibility": "on"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.highway",
+                           "elementType": "geometry.fill",
+                           "stylers": [
+                               {
+                                   "color": "#e5c163"
+                               },
+                               {
+                                   "lightness": "0"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.highway",
+                           "elementType": "geometry.stroke",
+                           "stylers": [
+                               {
+                                   "visibility": "off"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.highway",
+                           "elementType": "labels.text.fill",
+                           "stylers": [
+                               {
+                                   "color": "#ffffff"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.highway",
+                           "elementType": "labels.text.stroke",
+                           "stylers": [
+                               {
+                                   "color": "#e5c163"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.arterial",
+                           "elementType": "geometry",
+                           "stylers": [
+                               {
+                                   "color": "#000000"
+                               },
+                               {
+                                   "lightness": 18
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.arterial",
+                           "elementType": "geometry.fill",
+                           "stylers": [
+                               {
+                                   "color": "#575757"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.arterial",
+                           "elementType": "labels.text.fill",
+                           "stylers": [
+                               {
+                                   "color": "#ffffff"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.arterial",
+                           "elementType": "labels.text.stroke",
+                           "stylers": [
+                               {
+                                   "color": "#2c2c2c"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.local",
+                           "elementType": "geometry",
+                           "stylers": [
+                               {
+                                   "color": "#E7E7E7"
+                               },
+                               {
+                                   "lightness": 16
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "road.local",
+                           "elementType": "labels.text.fill",
+                           "stylers": [
+                               {
+                                   "color": "#e5c163"
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "transit",
+                           "elementType": "geometry",
+                           "stylers": [
+                               {
+                                   "color": "#000000"
+                               },
+                               {
+                                   "lightness": 19
+                               }
+                           ]
+                       },
+                       {
+                           "featureType": "water",
+                           "elementType": "geometry",
+                           "stylers": [
+                               {
+                                   "color": "#E7E7E7"
+                               },
+                               {
+                                   "lightness": 0
+                               }
+                           ]
+                       }
+                   ]
+
+
+               };
+
+               // Get the HTML DOM element that will contain your map
+               // We are using a div with id="map" seen below in the <body>
+               var mapElement = document.getElementById('world');
+
+               // Create the Google Map using our element and options defined above
+               var map = new google.maps.Map(mapElement, mapOptions);
+
+               // Let's also add a marker while we're at it
+               {% for contact in contacts %}
+
+               var marker = new google.maps.Marker({
+                   position: new google.maps.LatLng({{ contact.lat }}, {{ contact.lng }}),
+                   map: map,
+                   title: '{{ contact.fa_name }}',
+                   url: {{ contact.id }},
+                   animation: google.maps.Animation.DROP
+
+               });
+
+
+               google.maps.event.addListener(marker, 'click', function() {
+                   var elem = window.location.hash;
+                   elem = this.url;
+
+                   var target = "#".concat(elem),
+                       $target = $(target);
+
+                   $('html, body').animate({
+                       scrollTop: $target.offset().top + 35
+                   }, 1000);
+               });
+
+
+               {% endfor %}
+
+           }
+       </script>
+
+   {% endblock %}

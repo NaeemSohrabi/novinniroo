@@ -1,0 +1,67 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Employees List{% endblock %}
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header pull-left">
+                <a href="{{url('admin/employee/insert')}}" class="btn btn-success"><i class="fa fa-edit fa-lg"></i> افزودن عضو جدید</a>
+            </div>
+        </div>
+
+
+        <!-- /.panel -->
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <!-- /.panel-heading -->
+                <div class="text-center" >
+                    <div class="panel-heading " style="background-color: #94C9EE;">لیست اعضاء</div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>عنوان</th>
+                                <th>عکس</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if employees|length > 0 %}
+                                {% for employee in employees %}
+                                    <tr>
+                                        <td>{{ employee.id }}</td>
+                                        <td>{{ employee.fa_name }}  {{ employee.fa_family }}</td>
+                                        <td><img src="{{ url('uploads') }}/{{ employee.image }}" alt="" width="100"></td>
+
+                                        <td>
+                                            <a href="{{ url('admin/employee/edit') }}/{{ employee.id }}" class="btn btn-primary">ویرایش</a>
+                                            <a href="{{ url('admin/employee/delete') }}/{{ employee.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                عضو موجود نیست
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+

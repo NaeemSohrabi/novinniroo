@@ -1,0 +1,345 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}{{ product.title }} Edit{% endblock %}
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">ویرایش محصول</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <a href="{{ url('admin/product/insert') }}" class="btn btn-success">ثبت محصول جدید</a>
+                        <a href="{{ url('admin/product/list') }}" class="btn btn-info">لیست محصولات</a>
+                        <a href="{{ url('product/') }}{{ product.id }}/review" class="btn btn-danger" target="_blank">مشاهده صفحه محصول</a>
+                    </div>
+                    {#<div class="tab">#}
+                    {#<button class="tablinks active" onclick="openLanguage(event, 'data')">اطلاعات انگلیسی</button>#}
+                    {#<button class="tablinks" onclick="openLanguage(event, 'fa_data')">اطلاعات فارسی</button>#}
+                    {#<button class="tablinks" onclick="openLanguage(event, 'gallery')">گالری تصاویر</button>#}
+                    {#</div>#}
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist" id="myTab">
+                        <li role="presentation" class="active"><a href="#data" aria-controls="data" role="tab"
+                                                                  data-toggle="tab">اطلاعات انگلیسی</a></li>
+                        <li role="presentation"><a href="#fa_data" aria-controls="fa_data" role="tab" data-toggle="tab">اطلاعات
+                                فارسی</a></li>
+                        <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">گالری
+                                تصاویر</a></li>
+                        <li role="presentation"><a href="#meta" aria-controls="meta" role="tab" data-toggle="tab">تنظیمات
+                                سئو</a></li>
+                    </ul>
+
+                </div>
+                <div class="panel-body">
+
+
+                    <div class="tab-content">
+                        <div role="tabpanel" id="data" class="tab-pane active">
+                            <form action="/admin/product/update" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" class="form-control" name="id" value="{{ product.id }}">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">نام انگلیسی محصول: </label>
+                                    <div class="col-sm-4">
+                                        <input dir="ltr" type="text" class="form-control" name="title" placeholder="name"
+                                               value="{{ product.title }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"> برند محصول: </label>
+                                    <div class="col-sm-4">
+                                        <select dir="ltr" name="brand_id" id="" class="form-control">
+                                            {% for brand in brands %}
+                                                <option value="{{ brand.id }}"
+                                                        {% if brand.id == product.brand_id %}selected{% endif %} >{{ brand.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="ln-solid"></div>
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <h4>توضیحات
+                                        <small>(این توضیحات در قسمت توضیحات ابتدایی در صفحه محصول نمایش داده می شود)
+                                        </small>
+                                    </h4>
+                                    <div class="form-group">
+                                <textarea class="description" name="description"
+                                          placeholder="Description...">{{ product.description }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <h4>متن توضیحات
+                                        <small>(این متن در قسمت توضیحات کلی و ویژگی ها در صفحه محصول نمایش داده می شود)
+                                        </small>
+                                    </h4>
+                                    <div class="form-group">
+                                <textarea class="description" name="content"
+                                          placeholder="Description...">{{ product.content }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">کاتالوگ انگلیسی PDF</label>
+                                        <input type="file" id="exampleInputFile" name="catalog">
+                                    </div>
+                                   {% if product.catalog is not empty %}  <i class="fa fa-download"></i> <a href="{{ url('uploads') }}/{{ product.catalog }}"
+                                                                                                            class="">دانلود
+                                       فایل فعلی</a> {% endif %}
+
+                                    <div class="form-group">
+                                        <br>
+                                        <label for="exampleInputFile">کاور محصول</label>
+                                        <input type="file" id="exampleInputFile" name="cover">
+                                    </div>
+                                </div>
+
+                                <br>
+                                <div class="ln-solid"></div>
+
+                                <div class="image-gallery col-lg-offset-1">
+                                    <div class="col-sm-3">
+                                        <div class="image">
+                                            <img src="{{ url('uploads') }}/{{ product.cover }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                {#<div class="ln-solid"></div>#}
+
+                                <div class="ln-solid"></div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit"> ویرایش محصول</button>
+                                    <button class="btn btn-danger" type="submit" onclick="history.go(-1);">انصراف
+                                    </button>
+                                </div>
+
+                                {#</form>#}
+                        </div>
+
+                        <div role="tabpanel" id="fa_data" class="tab-pane fade">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">نام فارسی محصول: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="fa_title" placeholder="نام"
+                                           value="{{ product.fa_title }}">
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"> برند محصول: </label>
+                                <div class="col-sm-4">
+                                    <select dir="ltr" name="brand_id" id="" class="form-control">
+                                        {% for brand in brands %}
+                                            <option value="{{ brand.id }}"
+                                                    {% if brand.id == product.brand_id %}selected{% endif %} >{{ brand.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="ln-solid"></div>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>توضیحات
+                                    <small>(این توضیحات در قسمت توضیحات ابتدایی در صفحه محصول نمایش داده می شود)</small>
+                                </h4>
+                                <div class="form-group">
+                                <textarea class="description" name="fa_description"
+                                          placeholder="Description...">{{ product.fa_description }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>متن توضیحات
+                                    <small>(این متن در قسمت توضیحات کلی و ویژگی ها در صفحه محصول نمایش داده می شود)
+                                    </small>
+                                </h4>
+                                <div class="form-group">
+                                <textarea class="description" name="fa_content"
+                                          placeholder="Description...">{{ product.fa_content }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">کاتالوگ فارسی PDF</label>
+                                    <input type="file" id="exampleInputFile" name="fa_catalog">
+                                </div>
+                              {% if product.fa_catalog is not empty %}   <i class="fa fa-download"></i> <a href="{{ url('uploads') }}/{{ product.fa_catalog }}"
+                                                                                                           class="">دانلود
+                                  فایل فعلی</a> {% endif %}
+
+                            </div>
+
+                            <br>
+
+
+                            <div class="ln-solid"></div>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit"> ویرایش محصول</button>
+                                <button class="btn btn-danger" type="submit" onclick="history.go(-1);">انصراف</button>
+                            </div>
+
+                            </form>
+                        </div>
+
+                        <div role="tabpanel" id="gallery" class="tab-pane fade">
+
+                            <form action="/admin/product/media/store" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" class="form-control" name="entity_type" value="product">
+                                <input type="hidden" class="form-control" name="entity_id" value="{{ product.id }}">
+                                <input type="hidden" class="form-control" name="entity_position" value="gallery">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">افزودن تصاویر اسلایدشو: </label>
+                                    <div class="col-sm-6">
+                                        <input type="file" class="form-control" name="media">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button type="submit" class="btn btn-primary">بارگذاری تصاویر</button>
+                                    </div>
+                                </div>
+                                <br>
+                            </form>
+
+                            <div class="ln-solid clearfix"></div>
+
+                            <div class="image-gallery">
+                                {% if medias|length > 0 %}
+                                    {% for media in medias %}
+                                        <div class="col-sm-3 image-wrapper">
+                                            <div class="image">
+                                                <img src="{{ url('uploads') }}/{{ media.file }}" alt="">
+                                                <div class="info">
+                                                    <form action="/ajax/media/delete" method="post" class="media-form" style="margin-bottom: 10px">
+                                                        <input type="hidden" name="id" value="{{ media.id }}">
+                                                        <input type="submit" class="btn btn-danger btn-block"
+                                                               data-toggle="confirmation" data-placement="bottom"
+                                                               value="حذف تصویر">
+                                                    </form>
+                                                    {#<div class="ln-solid"></div>#}
+                                                    <form action="/ajax/media/alt" method="post" class="media-form">
+                                                        <input type="hidden" name="id" value="{{ media.id }}">
+                                                        <input type="text" name="alt" placeholder="insert alt attribute"
+                                                               class="form-control" value="{{ media.alt }}" style="margin-bottom: 10px">
+                                                        <input type="text" name="alt_fa" placeholder="تگ را وارد کنید"
+                                                               class="form-control" value="{{ media.alt_fa }}">
+                                                        <br>
+                                                        <input type="submit" id="submit"
+                                                               class="btn btn-success btn-block" value="ذخیره">
+                                                    </form>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    !oops not found
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" id="meta" class="tab-pane fade">
+
+                            <form action="/admin/meta/store" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" class="form-control" name="entity_type" value="product">
+                                <input type="hidden" class="form-control" name="entity_id" value="{{ product.id }}">
+                                <input type="hidden" class="form-control" name="tab_position" value="meta">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">متا تگ فارسی: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="meta_tag_fa" value="{{ meta.meta_tag_fa }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">متا تگ انگلیسی: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" dir="ltr" name="meta_tag" value="{{ meta.meta_tag }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">متا توضیحات فارسی: </label>
+                                    <div class="col-sm-6">
+                                        <textarea  class="form-control" name="meta_description_fa" rows="3">{{ meta.meta_description_fa }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">متا توضیحات انگلیسی: </label>
+                                    <div class="col-sm-6">
+                                        <textarea  class="form-control" dir="ltr" name="meta_description" rows="3">{{ meta.meta_description }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <button type="submit" class="btn btn-primary">به روز رسانی</button>
+                                    </div>
+                                </div>
+                                <br>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        function openLanguage(evt, language) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(language).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+
+    <script>
+
+        $(function () {
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+    </script>
+
+    <script>
+        $(function () {
+            var url = window.location.href;
+            var activeTab = url.substring(url.indexOf("#") + 1);
+//            $(".tab-pane").removeClass("active in");
+            $("#" + activeTab).addClass("active in");
+            $('a[href="#' + activeTab + '"]').tab('show')
+        });
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,180 @@
+{% extends "fa_base.twig" %}
+
+{% block title %}درباره ما{% endblock %}
+{% block meta_tag %}{{ elements.aboutmeta.meta_tag_fa }} {% endblock %}
+{% block meta_description %}{{ elements.aboutmeta.meta_description_fa }} {% endblock %}
+
+{% block body %}
+    {{ include('_templates/fa_header.twig') }}
+
+<section class="about-slide-show" dir="ltr">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="description hidden-xs" style="text-align: right">
+                    <p style="font-size: 16.84pt; color: #0e284b;">انتخاب عاقلانه برای تجارت</p>
+                    <p style="font-size: 35.95pt; color: #83c5ec;">واردات و صادرات</p>
+                    <p style="font-size: 36.95pt; color: #939598;">تجارت عمومی</p>
+                    <p style="font-size: 24.23pt; color: #0e284b;">تجهیزات صنعتی</p>
+                    <p style="font-size: 21.58pt; color: #c7c8ca;">خدمات گمرکی</p>
+                    <p style="font-size: 35.95pt; color: #83c5ec;">مشاوره کسب و کار</p>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="slide-show" style="display: none" >
+                    <div class="slider-for">
+                        {% for media in medias %}
+                            {% if media.status == 'نمایش' %}
+                                <a href="{{ url('uploads') }}/{{ media.file }}">
+                                    <img src="{{ url('uploads') }}/{{ media.file }}" alt="{{ media.alt_fa }}">
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="slider-nav hidden-xs">
+                        {% for media in medias %}
+                            {% if media.status == 'نمایش' %}
+                                <img src="{{ url('uploads') }}/{{ media.file }}" alt="{{ media.alt_fa }}">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="about-desc">
+        <div class="container">
+            <div class="about-wrapper">
+            <div class="about-text">
+                <h3>درباره ما:</h3>
+                <br>
+                <div class="about-content">{{ elements.about_info.fa_about_desc|raw }}</div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    {#{% if employees|length > 0 %}#}
+    {#<section class="employees">#}
+
+            {#<div class="container">#}
+                {#<div class="header">#}
+                    {#<div class="gradient">#}
+                    {#<div class="image layer">#}
+                        {#<img src="../../public/images/memberheader.jpg" alt="">#}
+                    {#</div>#}
+                    {#</div>#}
+                    {#<div class="title" style="font-family: irsans-no-reg">اعضای سازمان</div>#}
+                {#</div>#}
+                {#{% for employee in employees %}#}
+                    {#<div class="flex-container hidden-xs hidden-sm">#}
+                        {#<div class="picture">#}
+                            {#<div class="card-panel">#}
+                                {#<div class="image">#}
+                                    {#<img src="{{ url('uploads') }}/{{ employee.image }}" alt="{{ employee.fa_department }}"#}
+                                         {#class="">#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="information">#}
+                            {#<div class="body-information">#}
+                                {#<div class="name_family">{{ employee.fa_name }} {{ employee.fa_family }}</div>#}
+                                {#<div class="department"><i class="fa fa-sitemap"></i>{{ employee.fa_department }}</div>#}
+                                {#<div class="email"><i class="fa fa-envelope-open"></i>{{ employee.email }}</div>#}
+                                {#<div class="phone"><i class="fa fa-phone"></i>#}
+                                    {#{{ employee.phone[10:] }} {{ employee.phone[8:2] }} {{ employee.phone[5:3] }} {{ employee.phone[2:3] }} {{ employee.phone[:2] }}+</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#{% endfor %}#}
+
+
+                    {#<div class="slide visible-xs visible-sm">#}
+                {#{% for employee in employees %}#}
+                        {#<div>#}
+                            {#<div class="picture">#}
+                                {#<div class="card-panel">#}
+                                    {#<div class="image">#}
+                                        {#<img src="{{ url('uploads') }}/{{ employee.image }}" alt="{{ employee.fa_department }}"#}
+                                             {#class="">#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="information">#}
+                                {#<div class="body-information" dir="rtl">#}
+                                    {#<div class="name_family">{{ employee.fa_name }} {{ employee.fa_family }}</div>#}
+                                    {#<div class="department"><i class="fa fa-sitemap"></i>{{ employee.fa_department }}</div>#}
+                                    {#<div class="email"><i class="fa fa-envelope-open"></i>{{ employee.email }}</div>#}
+                                    {#<div class="phone"><i class="fa fa-phone"></i>#}
+                                        {#{{ employee.phone[10:] }} {{ employee.phone[8:2] }} {{ employee.phone[5:3] }} {{ employee.phone[2:3] }} {{ employee.phone[:2] }}+</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                {#{% endfor %}#}
+                    {#</div>#}
+
+
+
+            {#</div>#}
+        {#</section>#}
+
+    {#{% endif %}#}
+
+
+
+
+
+
+
+
+    {{ include('_templates/fa_footer.twig') }}
+
+
+{% endblock %}
+
+
+{% block script %}
+
+    <script>
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav',
+            autoplay: true
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            centerMode: true,
+            focusOnSelect: true
+        });
+
+        $('.slide-show').show()
+
+
+    </script>
+
+    <script>
+        $('.slide').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            // adaptiveHeight: true,
+            autoplay: true,
+            arrows: false,
+            slide:'',
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('.slider-for').slickLightbox();
+    </script>
+
+{% endblock %}

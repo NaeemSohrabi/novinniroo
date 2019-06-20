@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta name="viewport" content="user-scalable = no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/tab-logo.png">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="/css/bootstrap-rtl.min.css">-->
+    <link rel="stylesheet" href="/css/intro.css?v=5">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/aos.css">
+
+    <meta name="google-site-verification" content="UMFONaJ2oKTola0NJkSuTzpjBNLzymKYFfBvpdxn4ZQ" />
+    <title>Welcome to novinniroo</title>
+</head>
+<body>
+
+<section class="intro">
+    <div class="container">
+        <div class="row" >
+            <div class="col-md-6 col-xs-12">
+                <div class="en-logo">
+                    <img src="/images/Logo-Header.png" class="img-responsive">
+                </div>
+                <div class="text">
+                    <ul>
+                        <li><a href="lng/en">English</a></li>
+                        <li><a href="lng/fa" class="adob-arabic">فارسی</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="arab-logo clearfix ">
+                    <img src="/images/Logo-Oman.png" class="img-responsive">
+                </div>
+                <div class="text-inverce">
+                    <ul>
+                        <li><a href="http://www.masharyco.com/home/index">English</a></li>
+                        <li><a href="http://www.masharyco.com/home/index" class="adob-arabic">العربیة</a></li>
+                    </ul>
+                </div>
+                <!--<div class="text visible-xs">-->
+                    <!--<ul>-->
+                        <!--<li><a href="/en">English</a></li>-->
+                        <!--<li><a href="" class="adob-arabic">العربیة</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="welcom text-center">
+            <div class="persian">به وب سایت ما خوش آمدید، لطفاً زبان را انتخاب کنید</div>
+            <div class="english">Welcome to our website, Please select the language</div>
+            <div class="arabic sols">مرحبا بكم في موقعنا، يرجى اختيار اللغة</div>
+        </div>
+        <div class="copy-rule text-center">
+            <p>Copy Right © 2017 Novin Niroo Co., All Rights Reserved <a href="http://www.artwayco.com/" style="text-decoration: none; color: #B2B2B1" target="_blank">Artway Co.</a></p>
+        </div>
+
+    </div>
+</section>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="admin">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <div class="">
+                    <img src="/images/Logo-Header.png" class="img-responsive">
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">ورود به پنل مدیریت نوین نیرو</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" method="post" action="/admin/verify">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="نام کاربری" name="username" type="text"
+                                           autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="رمز عبور" name="password" type="password"
+                                           value="">
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <input type="submit" class="btn btn-lg btn-login btn-block" value="ورود"/>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">خروج</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/aos.js"></script>
+
+<!--<script language="javascript">-->
+    <!--function autoResizeDiv()-->
+    <!--{-->
+        <!--document.getElementById('main').style.height = window.innerHeight +'0';-->
+    <!--}-->
+    <!--window.onresize = autoResizeDiv;-->
+    <!--autoResizeDiv();-->
+<!--</script>-->
+
+<script>
+    $(document).ready(function() {
+
+        if(window.location.href.indexOf('#admin') != -1) {
+            $('#admin').modal('show');
+        }
+
+    });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $('html').css('height', $(window).height());
+        // Comma, not colon ----^
+    });
+    $(window).resize(function(){
+        $('html').css('height', $(window).height());
+
+        // Comma, not colon ----^
+    });
+
+    $(document).ready(function(){
+        $('body').css('height', $(window).height());
+        // Comma, not colon ----^
+    });
+    $(window).resize(function(){
+        $('body').css('height', $(window).height());
+        // Comma, not colon ----^
+    });
+</script>
+
+</body>
+</html>
+

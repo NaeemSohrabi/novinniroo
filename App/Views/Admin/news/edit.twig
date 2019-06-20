@@ -1,0 +1,176 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}News Edit{% endblock %}
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">ویرایش خبر</h1>
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+
+                    {#<div class="tab">#}
+                        {#<button class="tablinks  active" onclick="openLanguage(event, 'data')">اطلاعات انگلیسی</button>#}
+                        {#<button class="tablinks" onclick="openLanguage(event, 'fa_data')">اطلاعات فارسی</button>#}
+                    {#</div>#}
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist" id="myTab">
+                        <li role="presentation" class="active"><a href="#en_data" aria-controls="en_data" role="tab" data-toggle="tab">ویرایش اطلاعات انگلیسی</a></li>
+                        <li role="presentation"><a href="#fa_data" aria-controls="fa_data" role="tab" data-toggle="tab">ویرایش اطلاعات فارسی</a></li>
+                    </ul>
+
+                </div>
+
+
+                <div class="panel-body">
+
+                    <div class="tab-content">
+
+                            <div role="tabpanel" id="en_data" class="tab-pane active">
+                                <form action="/admin/news/update" class="form-horizontal" method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="id" value="{{ news.id }}">
+                                <br>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label col-lg-offset-0">عنوان انگلیسی خبر: </label>
+                                    <div class="col-sm-4">
+                                        <input dir="ltr" type="text" class="form-control" name="title" placeholder="title"
+                                               value="{{ news.title }}">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <h4>متن انگلیسی خبر</h4>
+                                    <div class="form-group">
+                                <textarea class="description" name="description"
+                                          placeholder="Summary...">{{ news.description }}</textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="ln-solid"></div>
+
+                                <br>
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <br>
+                                            <label for="exampleInputFile">تگ انگلیسی تصویر</label>
+                                            <input dir="ltr" type="text" class="form-control"  name="alt" value="{{ news.alt }}" placeholder="تگ تصویر را به زبان انگلیسی وارد کنید">
+                                        </div>
+                                        <div class="form-group">
+                                            <br>
+                                            <label for="exampleInputFile">عکس خبر</label>
+                                            <input type="file" id="exampleInputFile" name="image">
+                                        </div>
+                                    </div>
+                                    <div class="image-gallery col-lg-offset-1">
+                                        <div class="col-sm-3">
+                                            <div class="image">
+                                                <img src="{{ url('uploads') }}/{{ news.image }}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="ln-solid"></div>
+                                <div class="col-lg-offset-1">
+                                    <button class="btn btn-primary" type="submit">ویرایش خبر</button>
+                                    <button class="btn btn-danger" onclick="history.go(-1);">انصراف</button>
+                                </div>
+                                {#</form>#}
+                            </div>
+
+                            <div role="tabpanel" id="fa_data" class="tab-pane fade">
+                                <br>
+                                <div class="form-group clearfix">
+                                    <label class="col-sm-2 control-label col-lg-offset-0">عنوان فارسی خبر: </label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="fa_title" placeholder="عنوان"
+                                               value="{{ news.fa_title }}">
+                                    </div>
+                                </div>
+                                {#<br>#}
+                                <br>
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <h4>متن فارسی خبر</h4>
+                                    <div class="form-group">
+                                <textarea class="description" name="fa_description"
+                                          placeholder="Summary...">{{ news.fa_description|raw }}</textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="ln-solid"></div>
+                                <div class="form-group clearfix">
+                                    <label class="col-sm-2 control-label col-lg-offset-0">تگ فارسی تصویر: </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="alt_fa" placeholder="تگ تصویر را به زبان فارسی وارد کنید"
+                                               value="{{ news.alt_fa }}">
+                                    </div>
+                                </div>
+                                <div class="ln-solid"></div>
+                                <div class="col-lg-offset-1">
+                                    <button class="btn btn-primary" type="submit">ویرایش خبر</button>
+                                    <button class="btn btn-danger" onclick="history.go(-1);">انصراف</button>
+                                </div>
+
+                                </form>
+                    </div>
+
+
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        function openLanguage(evt, language) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(language).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+    <script>
+
+        $(function () {
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+    </script>
+
+    <script>
+        $(function () {
+            var url = window.location.href;
+            var activeTab = url.substring(url.indexOf("#") + 1);
+//            $(".tab-pane").removeClass("active in");
+            $("#" + activeTab).addClass("active in");
+            $('a[href="#' + activeTab + '"]').tab('show')
+        });
+    </script>
+
+{% endblock %}

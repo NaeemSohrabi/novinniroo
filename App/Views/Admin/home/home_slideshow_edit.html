@@ -1,0 +1,100 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}Home Slideshow{% endblock %}
+
+
+{% block body %}
+<!--Content Editor-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">ویرایش اسلایدشو</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form action="/admin/home/slideshow/update" class="form-horizontal" method="post"
+                      enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" name="id" value="{{media.id}}">
+                    <input type="hidden" class="form-control" name="entity_type" value="home">
+                    <input type="hidden" class="form-control" name="entity_id" value="null">
+                    <input type="hidden" class="form-control" name="entity_position" value="slideshow">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">عنوان تصویر اسلایدشو: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="title" value="{{media.title}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">توضیح تصویر اسلایدشو: </label>
+                        <div class="col-sm-6">
+                            <textarea name="description" class=" form-control" rows="10">{{media.description}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">انتخاب تصویراسلایدشو: </label>
+                        <div class="col-sm-6">
+                            <input type="file" class="form-control" name="media">
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary">بارگذاری </button>
+                        </div>
+                    </div>
+
+                    <div class="ln-solid clearfix"></div>
+
+                    <div class="image-gallery">
+                        <div class="col-sm-3 col-sm-offset-2">
+                            <div class="image">
+                                <img src="{{url('uploads')}}/{{media.file}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('.description').summernote({
+
+            toolbar: [
+                ['style', ['style']],
+                ['fontsize', ['fontsize']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert', ['picture', 'hr']],
+                ['table', ['table']]
+            ],
+
+            height: 200,
+            fontNames: ['myraidpro', 'persian-sols', 'irsans', 'Arial','Courier New'],
+            fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150']
+        });
+    });
+</script>
+
+<script>
+    function openLanguage(evt, language) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(language).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+{% endblock %}

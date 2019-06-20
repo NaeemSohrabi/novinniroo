@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+
+{% block title %}Brand{% endblock %}
+
+{% block body %}
+
+    {{ include('_templates/header.html') }}
+
+
+    <section class="brand-slide-show">
+        <div class="container">
+            <div class="row">
+                <div class="slider single-item">
+                    <div>
+                        <div class="slide-text text-center">
+                            <div class="slide-title">High efficient performance marvel !</div>
+                            {#<div class="slide-link"><a href="#">INDUSTRIAL PROCESS SOLUTIONS </a><i#}
+                            {#class="fa fa-angle-double-right"></i></div>#}
+                        </div>
+                        <div class="slid-image">
+                            <img src="../images/slide.jpg" alt="">
+                        </div>
+                    </div>
+                    {#<div>#}
+                        {#<div class="slid-image col-sm-8">#}
+                            {#<img src="../images/slide.jpg" alt="">#}
+                        {#</div>#}
+                        {#<div class="slide-text col-sm-4">#}
+                            {#<div class="slide-title">Lorem ipsum dolor sit amet, consectetuer</div>#}
+                            {#<div class="slide-link"><a href="#">Lorem ipsum dolor sit </a><i#}
+                                        {#class="fa fa-angle-double-right"></i></div>#}
+                        {#</div>#}
+                    {#</div>#}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<section class="brand-info">
+    <div class="container">
+        <div class="row">
+            <div class="logo col-sm-3">
+                <div class="services-image">
+                    <img src="/images/yemak-logo.png" alt="">
+                </div>
+            </div>
+            <div class="brand-text col-sm-9">
+                <div class="brand-title">YEMMAK Company Profile</div>
+                <div class="brand-sub">Established in 1965, Yemmak is Turkey's leading feed machinery manufacturer, providing industrial process solutions for the animal waste processing, chemical and biomass industries.
+                    Through its deep industry experience spanning over half a century, Yemmak exports to 34 countries on 4 continents, and provides services in project consulting and engineering, special-purpose projects, automation, modernization, steel construction and after-sales support with a 250-strong staff lead specialist engineers at its 50,000 m2 area plant in Bandırma, Turkey.
+                    Yemmak is among the few producers in Turkey and Europe that can manage machinery, process and turnkey projects from a single center.
+
+                    Yemmak recognizes the key role of advanced technology in improving Turkey's prospects and believes R&D investments are crucial in this regard.
+
+                    As a global brand, Yemmak exports 70 percent of its products to 34 countries including Egypt, Iran, Iraq, Syria, Israel, and the rest of the Middle East; Azerbaijan, Turkmenistan and all other Turkish republics; and Russia, Ukraine, Armenia, Sweden and Panama. Providing low energy costs, the design, production, and assembly operations of the company are of high quality, selection, reliability, and efficiency.
+
+                    Yemmak sees each project as a complete system, and identifies for its customers the most optimal solutions. Yemmak stands out with its distinctive projects. With the mission of transforming factories into manufacturers that turn out products with high marginal utility, Yemmak has thus far set up numerous of the highest capacity factories, producing feed for poultry, cattle and fish. It is currently establishing the largest turkey feed factory in Russia.</div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<section class="brand-customers">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="col-sm-2">
+                        <div class="customers-image">
+                            <img src="/images/zarbal.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="customers-image">
+                            <img src="/images/kaleh.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="customers-image">
+                            <img src="/images/miach.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="customers-image">
+                            <img src="/images/simorgh.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="customers-title">Always a step ahead with customers.</div>
+                    <div class="customers-sub">During the years of its operation, Novin Niroo Holding with broad flexIbility, high performances and total quality, has been proud to partner with big and respectable companies, some of which are:</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ include('_templates/footer.html') }}
+
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        $('.single-item').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            arrows: false,
+            fade: true,
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Contact Meta Edit{% endblock %}
+
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">مدیریت سئو (متا تگ) صفحه ارتباط با ما</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+ورود اطلاعات
+                </div>
+                <div class="panel-body">
+
+                    <form action="/admin/contact/meta/update" class="form-horizontal" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" class="form-control" name="entity_key" value="contactmeta">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">متا تگ فارسی: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="meta_tag_fa" value="{{ elements.contactmeta.meta_tag_fa }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">متا تگ انگلیسی: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" dir="ltr" name="meta_tag" value="{{ elements.contactmeta.meta_tag }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">متا توضیحات فارسی: </label>
+                            <div class="col-sm-6">
+                                <textarea  class="form-control"  name="meta_description_fa" rows="3">{{ elements.contactmeta.meta_description_fa }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">متا توضیحات انگلیسی: </label>
+                            <div class="col-sm-6">
+                                <textarea  class="form-control" dir="ltr" name="meta_description" rows="3">{{ elements.contactmeta.meta_description }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary">به روز رسانی</button>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block script %}
+
+    {#<script>#}
+    {#function openLanguage(evt, language) {#}
+    {#var i, tabcontent, tablinks;#}
+    {#tabcontent = document.getElementsByClassName("tabcontent");#}
+    {#for (i = 0; i < tabcontent.length; i++) {#}
+    {#tabcontent[i].style.display = "none";#}
+    {#}#}
+    {#tablinks = document.getElementsByClassName("tablinks");#}
+    {#for (i = 0; i < tablinks.length; i++) {#}
+    {#tablinks[i].className = tablinks[i].className.replace(" active", "");#}
+    {#}#}
+    {#document.getElementById(language).style.display = "block";#}
+    {#evt.currentTarget.className += " active";#}
+    {#}#}
+    {#</script>#}
+
+    <script>
+
+        $(function(){
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+
+    </script>
+
+    <script>
+        $(function(){
+            var url = window.location.href;
+            var activeTab = url.substring(url.indexOf("#") + 1);
+//            $(".tab-pane").removeClass("active in");
+            $("#" + activeTab).addClass("active in");
+            $('a[href="#'+ activeTab +'"]').tab('show')
+        });
+    </script>
+
+{% endblock %}

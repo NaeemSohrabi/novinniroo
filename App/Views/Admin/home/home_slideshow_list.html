@@ -1,0 +1,99 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}Home Slideshow{% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <form action="/admin/home/slideshow/store" class="form-horizontal" method="post"
+                  enctype="multipart/form-data">
+                <input type="hidden" class="form-control" name="entity_type" value="home">
+                <input type="hidden" class="form-control" name="entity_id" value="null">
+                <input type="hidden" class="form-control" name="entity_position" value="slideshow">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">عنوان تصویر اسلایدشو: </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">توضیح تصویر اسلایدشو: </label>
+                    <div class="col-sm-6">
+                        <textarea name="description" class=" form-control" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">افزودن تصویر اسلایدشو: </label>
+                    <div class="col-sm-6">
+                        <input type="file" class="form-control" name="media">
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="submit" class="btn btn-primary">بارگذاری</button>
+                    </div>
+                </div>
+            </form>        </div>
+
+        <!--<h1 class="page-header">لیست اسلایدها</h1>-->
+    </div>
+
+    <!-- /.panel -->
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <!-- /.panel-heading -->
+            <div class="text-center" >
+                <div class="panel-heading " style="background-color: #94C9EE;">لیست اسلایدها</div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ردیف</th>
+                            <th>عنوان</th>
+                            <th>توضیح</th>
+                            <th>تصویر</th>
+                            <th><i class="fa fa-cog"></i> تنظیمات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if medias|length > 0 %}
+                        {% for media in medias %}
+                        <tr>
+                            <td>{{ media.id }}</td>
+                            <td>{{ media.title }}</td>
+                            <td>{{ media.description }}</td>
+                            <td><img src="{{ url('uploads') }}/{{ media.file }}" alt="" width="100"></td>
+                            <td>
+                                <a href="{{ url('admin/home/slideshow/edit') }}/{{ media.id }}" class="btn btn-primary">ویرایش</a>
+                                <a href="{{ url('admin/home/slideshow/delete') }}/{{ media.id }}" class="btn btn-danger">حذف</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="5">
+                                <div class="text-center">!oops not found</div>
+                            </td>
+                        </tr>
+                        {% endif %}
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+

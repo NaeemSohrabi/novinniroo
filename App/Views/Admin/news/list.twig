@@ -1,0 +1,67 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Newses List{% endblock %}
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header pull-left">
+                <a href="{{url('admin/news/insert')}}" class="btn btn-success"><i class="fa fa-edit fa-lg"></i> افزودن خبر جدید</a>
+            </div>
+        </div>
+
+
+        <!-- /.panel -->
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <!-- /.panel-heading -->
+                <div class="text-center" >
+                    <div class="panel-heading " style="background-color: #94C9EE;">لیست اخبار</div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>عنوان</th>
+                                <th>عکس</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if newses|length > 0 %}
+                                {% for news in newses %}
+                                    <tr>
+                                        <td>{{ news.id }}</td>
+                                        <td>{{ news.fa_title[:40] ~ '...' }} / {{ news.title[:30] ~ '...' }}</td>
+                                        <td><img src="{{ url('uploads') }}/{{ news.image }}" alt="" width="100"></td>
+
+                                        <td>
+                                            <a href="{{ url('admin/news/edit') }}/{{ news.id }}" class="btn btn-primary">ویرایش</a>
+                                            <a href="{{ url('admin/news/delete') }}/{{ news.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                خبری موجود نیست
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+

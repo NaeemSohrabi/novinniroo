@@ -1,0 +1,66 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Page List{% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header pull-left">
+            <a href="{{url('admin/page/insert')}}" class="btn btn-success"><i class="fa fa-edit fa-lg"></i> ثبت صفحه جدید</a>
+        </div>
+
+    </div>
+
+
+    <!-- /.panel -->
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <!-- /.panel-heading -->
+            <div class="text-center" >
+                <div class="panel-heading " style="background-color: #94C9EE;">لیست صفحات</div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ردیف</th>
+                            <th>عنوان</th>
+                            <th><i class="fa fa-cog"></i> خلاصه</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if pages|length > 0 %}
+                        {% for page in pages %}
+                        <tr>
+                            <td>{{ page.id }}</td>
+                            <td>{{ page.title }}</td>
+                            <td>
+                                <a href="{{ url('admin/page/edit') }}/{{ page.id }}" class="btn btn-primary">ویرایش</a>
+                                <a href="{{ url('admin/page/delete') }}/{{ page.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        صفحه ای موجود نیست
+                        {% endif %}
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+

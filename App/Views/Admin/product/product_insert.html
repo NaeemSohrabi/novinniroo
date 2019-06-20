@@ -1,0 +1,172 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}Product Insert{% endblock %}
+
+
+{% block body %}
+<!--Content Editor-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">افزودن محصول</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="tab">
+                    <button class="tablinks" onclick="openLanguage(event, 'gallery')">گالری تصاویر</button>
+                    <button class="tablinks active" onclick="openLanguage(event, 'data')">اطلاعات</button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div id="data" class="tabcontent active" style="display: block;">
+                    <form action="/admin/product/store" class="form-horizontal" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" class="form-control" name="id" value="">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">نام انگلیسی محصول: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="title" placeholder="name"
+                                       value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"> برند محصول: </label>
+                            <div class="col-sm-4">
+                                <select name="brand_id" id="" class="form-control">
+                                    {% for brand in brands %}
+                                    <option value="{{brand.id}}" {% if brand.id == product.brand_id %}selected{% endif %} >{{brand.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ln-solid"></div>
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <h4>توضیحات
+                                <small>(این توضیحات در قسمت توضیحات ابتدایی در صفحه محصول نمایش داده می شود)</small>
+                            </h4>
+                            <div class="form-group">
+                                <textarea class="description" name="description"
+                                          placeholder="Description..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <h4>متن توضیحات
+                                <small>(این متن در قسمت توضیحات کلی و ویژگی ها در صفحه محصول نمایش داده می شود)</small>
+                            </h4>
+                            <div class="form-group">
+                                <textarea class="description" name="content"
+                                          placeholder="Description..."></textarea>
+                            </div>
+                        </div>
+                        <div class="ln-solid"></div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">فایل PDF</label>
+                            <input type="file" id="exampleInputFile" name="catalog">
+                        </div>
+                        <div class="ln-solid"></div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">کاور محصول</label>
+                            <input type="file" id="exampleInputFile" name="cover">
+                        </div>
+
+                        <div class="form-group">
+                            <!--<label class="col-sm-2 control-label">افزودن لوگو: </label>-->
+                            <!--<div class="col-sm-6">-->
+                                <!--<input type="file" name="brand_logo" class="form-control">-->
+                            <!--</div>-->
+
+                            <!--<div class="image-gallery">-->
+                                <!--<div class="col-sm-3">-->
+                                    <!--<div class="image">-->
+                                        <!--<img src="" alt="">-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <button class="btn btn-primary" type="submit">افزودن محصول</button>
+                            <button class="btn btn-danger" type="submit" onclick="history.go(-1);">انصراف</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div id="gallery" class="tabcontent">
+
+                    <form action="/admin/brand/store" class="form-horizontal" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" class="form-control" name="entity_type" value="">
+                        <input type="hidden" class="form-control" name="entity_id" value="">
+                        <input type="hidden" class="form-control" name="entity_position" value="">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">افزودن تصاویر اسلایدشو: </label>
+                            <div class="col-sm-6">
+                                <input type="file" class="form-control" name="media">
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-success">بارگذاری تصاویر</button>
+                            </div>
+                        </div>
+                        <!--<div class="ln-solid clearfix"></div>-->
+
+
+                    </form>
+
+                    <div class="ln-solid clearfix"></div>
+
+                    <div class="image-gallery">
+                        <div class="col-sm-3">
+                            <div class="image">
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('.description').summernote({
+
+            toolbar: [
+                ['style', ['style']],
+                ['fontSizes', ['fontsize']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontNames', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert', ['picture', 'hr']],
+                ['insert',['ltr','rtl']],
+                ['table', ['table']]
+            ],
+
+            height: 200,
+            fontNames: ['myraidpro', 'persian-sols', 'irsans', 'Arial'],
+            fontSizes: ['8', '9', '10pt', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
+//            placeholder: 'write here...',
+        });
+    });
+</script>
+
+<script>
+    function openLanguage(evt, language) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(language).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+
+{% endblock %}

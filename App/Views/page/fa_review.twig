@@ -1,0 +1,98 @@
+{% extends "fa_base.twig" %}
+
+{% block title %}{{ page.fa_title }}{% endblock %}
+
+{% block meta_tag %}{{ meta.meta_tag_fa }} {% endblock %}
+{% block meta_description %}{{ meta.meta_description_fa }} {% endblock %}
+
+
+{% block body %}
+
+    {{ include('_templates/fa_header.twig') }}
+
+    <section class="page-slide-show" dir="ltr">
+        <div class="container">
+            <div class="page-wrapper">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="description">
+                            <h1 style="font-size: 16.84pt; color: #0e284b; text-align: right">{{ page.fa_title }}</h1>
+                            <div class="desc" style="" dir="rtl">{{ page.fa_summary|raw }}</div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="slide-show" style="display: none">
+                            <div class="slider-for">
+                                {% for media in medias %}
+                                    {% if media.status == 'نمایش' %}
+                                        <a href="{{ url('uploads') }}/{{ media.file }}">
+                                            <img src="{{ url('uploads') }}/{{ media.file }}" alt="{{ media.alt_fa }}">
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="slider-nav hidden-xs">
+                                {% for media in medias %}
+                                    {% if media.status == 'نمایش' %}
+                                        <img src="{{ url('uploads') }}/{{ media.file }}" alt="{{ media.alt_fa }}">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if (page.fa_subtitle| length > 0) and (page.fa_description| length > 0) %}
+        <section class="about-desc">
+            <div class="container">
+                <div class="about-wrapper">
+                    <div class="about-text">
+                        <h3>{{ page.fa_subtitle }}</h3>
+                        <br>
+                        <div class="about-content">{{ page.fa_description|raw }}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
+    {{ include('_templates/fa_footer.twig') }}
+
+
+{% endblock %}
+
+
+{% block script %}
+
+    <script>
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav',
+            autoplay: true
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            centerMode: true,
+            focusOnSelect: true
+        });
+
+        $('.slide-show').show()
+
+
+    </script>
+
+    <script type="text/javascript">
+        $('.slider-for').slickLightbox();
+    </script>
+
+{% endblock %}

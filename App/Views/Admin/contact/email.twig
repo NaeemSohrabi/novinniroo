@@ -1,0 +1,191 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Email Settings{% endblock %}
+
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">مدیریت ایمیل ها</h1>
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" >
+                            <br>
+                            <form action="/admin/element/emails/update" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" class="form-control" name="entity_key" value="contact_emails">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_1" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_1}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_1" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_1}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_2" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_2}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_2" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_2}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_3" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_3}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_3" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_3}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_4" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_4}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_4" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_4}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_5" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_5}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_5" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_5}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_6" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_6}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_6" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_6}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_7" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_7}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_7" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_7}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_8" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_8}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_8" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_8}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_9" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_9}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_9" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_9}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / ایمیل: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_10" placeholder="عنوان" dir="ltr"  value="{{elements.contact_emails.name_10}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="email_10" placeholder="آدرس ایمیل" dir="ltr" value="{{elements.contact_emails.email_10}}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-sm-offset-2">
+                                        <button type="submit" class="btn btn-primary">بارگذاری</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block script %}
+
+    {#<script>#}
+    {#function openLanguage(evt, language) {#}
+    {#var i, tabcontent, tablinks;#}
+    {#tabcontent = document.getElementsByClassName("tabcontent");#}
+    {#for (i = 0; i < tabcontent.length; i++) {#}
+    {#tabcontent[i].style.display = "none";#}
+    {#}#}
+    {#tablinks = document.getElementsByClassName("tablinks");#}
+    {#for (i = 0; i < tablinks.length; i++) {#}
+    {#tablinks[i].className = tablinks[i].className.replace(" active", "");#}
+    {#}#}
+    {#document.getElementById(language).style.display = "block";#}
+    {#evt.currentTarget.className += " active";#}
+    {#}#}
+    {#</script>#}
+
+    <script>
+
+        $(function(){
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+
+    </script>
+
+    <script>
+        $(function(){
+            var url = window.location.href;
+            var activeTab = url.substring(url.indexOf("#") + 1);
+//            $(".tab-pane").removeClass("active in");
+            $("#" + activeTab).addClass("active in");
+            $('a[href="#'+ activeTab +'"]').tab('show')
+        });
+    </script>
+
+{% endblock %}

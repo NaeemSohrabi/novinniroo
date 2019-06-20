@@ -1,0 +1,331 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Brand Edit{% endblock %}
+
+
+{% block body %}
+<!--Content Editor-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">ویرایش برند</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <a href="{{url('admin/brand/insert')}}" class="btn btn-success">ثبت برند جدید</a>
+                    <a href="{{url('admin/brand/list')}}" class="btn btn-info">لیست برندها</a>
+                    <a href="{{url('brand/')}}{{ brand.id }}/review" class="btn btn-danger" target="_blank">مشاهده صفحه برند</a>
+                </div>
+                {#<div class="tab">#}
+                    {#<button class="tablinks   active" onclick="openLanguage(event, 'data')">اطلاعات انگلیسی</button>#}
+                    {#<button class="tablinks" onclick="openLanguage(event, 'fa_data')">اطلاعات فارسی</button>#}
+                    {#<button class="tablinks " onclick="openLanguage(event, 'gallery')">گالری تصاویر</button>#}
+                    {#<button class="tablinks " onclick="openLanguage(event, 'branches')">مشتریان / محل نصب پروژه</button>#}
+                {#</div>#}
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" id="myTab">
+                    <li role="presentation" class="active"><a href="#data" aria-controls="data" role="tab" data-toggle="tab">اطلاعات انگلیسی</a></li>
+                    <li role="presentation"><a href="#fa_data" aria-controls="fa_data" role="tab" data-toggle="tab">اطلاعات فارسی</a></li>
+                    <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">گالری تصاویر</a></li>
+                    <li role="presentation"><a href="#branches" aria-controls="branches" role="tab" data-toggle="tab">مشتریان / محل نصب پروژه</a></li>
+                    <li role="presentation"><a href="#meta" aria-controls="meta" role="tab" data-toggle="tab">تنظیمات
+                            سئو</a></li>
+
+                </ul>
+
+            </div>
+            <div class="panel-body">
+
+
+
+
+
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" id="data" class="tab-pane active" >
+                        <br>
+                        <form action="/admin/brand/update" class="form-horizontal"  method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="id" value="{{brand.id}}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">نام انگلیسی برند: </label>
+                                <div class="col-sm-4">
+                                    <input dir="ltr" type="text" class="form-control" name="title" placeholder="name"
+                                           value="{{brand.title}}">
+                                </div>
+                            </div>
+                            <div class="ln-solid"></div>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>توضیحات
+                                    <small>(این توضیحات در قسمت توضیحات ابتدایی در صفحه برند نمایش داده می شود)</small>
+                                </h4>
+                                <div class="form-group">
+                                <textarea class="description" name="description"
+                                          placeholder="Description...">{{brand.description}}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>متن نمایندگی ها
+                                    <small>(این متن در قسمت توضیحات نمایندگی ها در صفحه برند نمایش داده می شود)</small>
+                                </h4>
+                                <div class="form-group">
+                                <textarea class="description" name="branch_text"
+                                          placeholder="Description...">{{brand.branch_text}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">افزودن لوگو: </label>
+                                <div class="col-sm-6">
+                                    <input type="file" name="brand_logo" class="form-control">
+                                </div>
+
+                                <div class="image-gallery">
+                                    <div class="col-sm-3">
+                                        <div class="image">
+                                            <img src="{{url('uploads')}}/{{brand.brand_logo}}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">ویرایش
+                                برند</button>
+                            <button class="btn btn-danger" type="submit" onclick="history.go(-1);">انصراف</button>
+                            {#</form>#}
+                    </div>
+                    <div role="tabpanel" id="fa_data" class="tab-pane fade">
+
+                        <input type="hidden" class="form-control" name="id" value="{{brand.id}}">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">نام فارسی برند: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="fa_title" placeholder="نام"
+                                       value="{{brand.fa_title}}">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="ln-solid"></div>
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <h4>توضیحات
+                                <small>(این توضیحات در قسمت توضیحات ابتدایی در صفحه برند نمایش داده می شود)</small>
+                            </h4>
+                            <div class="form-group">
+                                <textarea class="description" name="fa_description"
+                                          placeholder="Description...">{{brand.fa_description}}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <h4>متن نمایندگی ها
+                                <small>(این متن در قسمت توضیحات نمایندگی ها در صفحه برند نمایش داده می شود)</small>
+                            </h4>
+                            <div class="form-group">
+                                <textarea class="description" name="fa_branch_text"
+                                          placeholder="Description...">{{brand.fa_branch_text}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">افزودن لوگو: </label>
+                            <div class="col-sm-6">
+                                <input type="file" name="brand_logo" class="form-control">
+                            </div>
+
+                            <div class="image-gallery">
+                                <div class="col-sm-3">
+                                    <div class="image">
+                                        <img src="{{url('uploads')}}/{{brand.brand_logo}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <button class="btn btn-primary" type="submit">ویرایش
+                            برند</button>
+                        <button class="btn btn-danger" type="submit" onclick="history.go(-1);">انصراف</button>
+                        </form>
+                    </div>
+
+                    <div role="tabpanel" id="gallery" class="tab-pane fade">
+
+                        <form action="/admin/brand/media/store" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="entity_type" value="brand">
+                            <input type="hidden" class="form-control" name="entity_id" value="{{brand.id}}">
+                            <input type="hidden" class="form-control" name="entity_position" value="gallery">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">افزودن تصاویر اسلایدشو: </label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control" name="media">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-success">بارگذاری تصاویر</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="ln-solid clearfix"></div>
+
+                        <div class="image-gallery">
+                            {% if medias|length > 0 %}
+                                {% for media in medias %}
+                                    <div class="col-sm-6 image-wrapper">
+                                        <div class="image">
+                                            <img src="{{url('uploads')}}/{{media.file}}" alt="">
+                                            <div class="info">
+                                                <form action="/ajax/media/delete" method="post" class="media-form" style="margin-bottom: 10px; margin-top: -10px">
+                                                    <input type="hidden" name="id" value="{{ media.id }}">
+                                                    <input type="submit" class="btn btn-danger btn-block"
+                                                           data-toggle="confirmation" data-placement="bottom"
+                                                           value="حذف تصویر">
+                                                </form>
+                                                {#<br>#}
+                                                {#<div class="ln-solid"></div>#}
+                                                <form action="/ajax/media/alt" method="post" class="media-form" style="margin-top: 10px">
+                                                    <input type="hidden" name="id" value="{{ media.id }}">
+                                                    <input type="text" name="alt" placeholder="insert alt attribute"
+                                                           class="form-control" value="{{ media.alt }}" style="margin-bottom: 5px; margin-top: 10px">
+                                                    <input type="text" name="alt_fa" placeholder="تگ را وارد کنید"
+                                                           class="form-control" value="{{ media.alt_fa }}">
+                                                    <br>
+                                                    <input type="submit" id="submit"
+                                                           class="btn btn-success btn-block" value="ذخیره" style="margin-top: -7px">
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                !oops not found
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" id="branches" class="tab-pane fade">
+
+                        <a href="{{ url('admin/brand') }}/{{brand.id}}/branch/insert" class="btn btn-warning pull-left">افزودن پروژه جدید</a>
+                        <br>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>عنوان</th>
+                                    <th>عکس</th>
+                                    <th><i class="fa fa-cog"></i> تنظیمات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if branches|length > 0 %}
+                                    {% for branch in branches %}
+                                        <tr>
+                                            <td>{{ branch.id }}</td>
+                                            <td>{{ branch.title }}</td>
+                                            <td><img src="{{ url('uploads') }}/{{ branch.image }}" alt="" width="50"></td>
+                                            <td>
+                                                <a href="{{ url('admin/brand/branch/edit') }}/{{ branch.id }}" class="btn btn-primary">ویرایش</a>
+                                                <a href="{{ url('admin/brand/branch/delete') }}/{{ branch.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    !oops not found
+                                {% endif %}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="ln-solid clearfix"></div>
+
+
+                    </div>
+
+                    <div role="tabpanel" id="meta" class="tab-pane fade">
+
+                        <form action="/admin/meta/store" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="entity_type" value="brand">
+                            <input type="hidden" class="form-control" name="entity_id" value="{{ brand.id }}">
+                            <input type="hidden" class="form-control" name="tab_position" value="meta">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">متا تگ فارسی: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="meta_tag_fa" value="{{ meta.meta_tag_fa }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">متا تگ انگلیسی: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" dir="ltr" name="meta_tag" value="{{ meta.meta_tag }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">متا توضیحات فارسی: </label>
+                                <div class="col-sm-6">
+                                    <textarea  class="form-control" name="meta_description_fa" rows="3">{{ meta.meta_description_fa }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">متا توضیحات انگلیسی: </label>
+                                <div class="col-sm-6">
+                                    <textarea  class="form-control" dir="ltr" name="meta_description" rows="3">{{ meta.meta_description }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-primary">به روز رسانی</button>
+                                </div>
+                            </div>
+                            <br>
+                        </form>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+
+{#<script>#}
+    {#function openLanguage(evt, language) {#}
+        {#var i, tabcontent, tablinks;#}
+        {#tabcontent = document.getElementsByClassName("tabcontent");#}
+        {#for (i = 0; i < tabcontent.length; i++) {#}
+            {#tabcontent[i].style.display = "none";#}
+        {#}#}
+        {#tablinks = document.getElementsByClassName("tablinks");#}
+        {#for (i = 0; i < tablinks.length; i++) {#}
+            {#tablinks[i].className = tablinks[i].className.replace(" active", "");#}
+        {#}#}
+        {#document.getElementById(language).style.display = "block";#}
+        {#evt.currentTarget.className += " active";#}
+    {#}#}
+{#</script>#}
+
+    <script>
+
+        $(function(){
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+    </script>
+
+{% endblock %}

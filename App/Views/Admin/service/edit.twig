@@ -1,0 +1,212 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Service Edit{% endblock %}
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">ویرایش سرویس</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="pull-left"><a href="{{ url('admin/service/list') }}" class="btn btn-info">لیست سرویس ها</a></div>
+                    <div class="tab">
+                        <button class="tablinks  active" onclick="openLanguage(event, 'data')">اطلاعات انگلیسی</button>
+                        <button class="tablinks" onclick="openLanguage(event, 'fa_data')">اطلاعات فارسی</button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form action="/admin/service/update" class="form-horizontal" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{{ service.id }}">
+
+                        <div id="data" class="tabcontent active" style="display: block;">
+
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label col-lg-offset-0">عنوان انگلیسی سرویس: </label>
+                                <div class="col-sm-4">
+                                    <input dir="ltr" type="text"  class="form-control" name="title" placeholder="title"
+                                           value="{{ service.title }}">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">لینک: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="manual" class="form-control" name="link" value="{{ service.link }}" style="text-align: left; direction: ltr">
+                                    <select name="link" id="product-list" class="form-control" disabled style="display: none">
+                                        <option value="">انتخاب محصول ...</option>
+                                        {% for value in products %}
+                                            <option value="{{ url('product') }}/{{ value.id }}/review">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select name="link" id="brand-list" class="form-control" disabled style="display: none">
+                                        <option value="">انتخاب برند ...</option>
+                                        {% for value in brands %}
+                                            <option value="{{ url('brand') }}/{{ value.id }}/review">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select name="link" id="page-list" class="form-control" disabled style="display: none">
+                                        <option value="">انتخاب صفحه ...</option>
+                                        {% for value in pages %}
+                                            <option value="{{ url('page') }}/review/{{ value.slug }}">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="manual-link">انتخاب دستی </label><input type="radio" id="manual-link" name="list">
+                                    <label for="product-link">انتخاب محصول </label><input type="radio" id="product-link" name="list">
+                                    <label for="brand-link">انتخاب برند </label><input type="radio" id="brand-link" name="list">
+                                    <label for="page-link">انتخاب صفحه </label><input type="radio" id="page-link" name="list">
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>متن انگلیسی سرویس</h4>
+                                <div class="form-group">
+                                <textarea class="description" name="description"
+                                          placeholder="Summary...">{{ service.description }}</textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="ln-solid"></div>
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div class="form-group">
+                                    <br>
+                                    <label for="exampleInputFile">تگ انگلیسی تصویر</label>
+                                    <input type="text" class="form-control" dir="ltr"  name="alt" value="{{ service.alt }}" placeholder="تگ تصویر را به زبان انگلیسی وارد کنید">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="form-group">
+                                    <label for="sel1" class="col-sm-2 control-label">وضعیت نمایش:</label>
+                                    <select class="form-control col-sm-6" name="status">
+                                        <option value="{{ service.status }}">{{ service.status }}</option>
+                                        <option value="نمایش">نمایش</option>
+                                        <option value="عدم نمایش">عدم نمایش</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">اولویت نمایش: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="priority" value="{{ service.priority }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <br>
+                                    <label for="exampleInputFile">عکس سرویس</label>
+                                    <input type="file" id="exampleInputFile" name="image">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="image-gallery col-lg-offset-1">
+                                <div class="col-sm-3">
+                                    <div class="image">
+                                        <img src="{{ url('uploads') }}/{{ service.image }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ln-solid"></div>
+                            <div class="col-lg-offset-1">
+                                <button class="btn btn-primary" type="submit">ویرایش سرویس</button>
+                                <button class="btn btn-danger" onclick="history.go(-1);">انصراف</button>
+                            </div>
+                            {#</form>#}
+                        </div>
+
+                        <div id="fa_data" class="tabcontent">
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label col-lg-offset-0">عنوان فارسی سرویس: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="fa_title" placeholder="عنوان"
+                                           value="{{ service.fa_title }}">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>متن فارسی سرویس</h4>
+                                <div class="form-group">
+                                <textarea class="description" name="fa_description"
+                                          placeholder="Summary...">{{ service.fa_description|raw }}</textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="ln-solid"></div>
+                            <div class="form-group clearfix">
+                                <label class="col-sm-2 control-label col-lg-offset-0">تگ فارسی تصویر: </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="alt_fa" placeholder="تگ تصویر را به زبان فارسی وارد کنید"
+                                           value="{{ service.alt_fa }}">
+                                </div>
+                            </div>
+                            <div class="ln-solid"></div>
+
+                            <div class="col-lg-offset-1">
+                                <button class="btn btn-primary" type="submit">ویرایش سرویس</button>
+                                <button class="btn btn-danger" onclick="history.go(-1);">انصراف</button>
+                            </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        function openLanguage(evt, language) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(language).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#page-link').click(function () {
+                if ($('#page-link').is(':checked')) {
+                    $('#brand-list, #manual, #product-list').attr('disabled', true).hide();
+                    $('#page-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#product-link').click(function () {
+                if ($('#product-link').is(':checked')) {
+                    $('#brand-list, #manual, #page-list').attr('disabled', true).hide();
+                    $('#product-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#brand-link').click(function () {
+                if ($('#brand-link').is(':checked')) {
+                    $('#product-list, #manual, #page-list').attr('disabled', true).hide();
+                    $('#brand-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#manual-link').click(function () {
+                if ($('#manual-link').is(':checked')) {
+                    $('#brand-list, #product-list, #page-list').attr('disabled', true).hide();
+                    $('#manual').attr('disabled', false).show();
+                }
+            });
+        });
+
+    </script>
+
+{% endblock %}

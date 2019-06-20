@@ -1,0 +1,101 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Customer List{% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <a href="customer-insert.html" class="btn btn-success"><i class="fa fa-edit fa-lg"></i>  ثبت مشتری جدید</a>
+        </div>
+        <form action="" class="form-horizontal" method="get">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">نام مشتری: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="نام">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a href="" class="btn btn-success">جستجوی مشتری</a>
+                </div>
+            </div>
+        </form>
+        <h1 class="page-header">لیست مشتریان</h1>
+    </div>
+
+    <!-- /.panel -->
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ردیف</th>
+                            <th>عنوان</th>
+                            <th>عنوان انگلیسی</th>
+                            <th>برند</th>
+                            <th><i class="fa fa-cog"></i> تنظیمات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>
+                                <a href="" class="btn btn-primary">ویرایش</a>
+                                <a href="" class="btn btn-danger">آرشیو</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>
+                                <a href="" class="btn btn-primary">ویرایش</a>
+                                <a href="" class="btn btn-danger">آرشیو</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>
+                                <a href="" class="btn btn-primary">ویرایش</a>
+                                <a href="" class="btn btn-danger">آرشیو</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>John</td>
+                            <td>Smith</td>
+                            <td>@jsmith</td>
+                            <td>
+                                <a href="" class="btn btn-primary">ویرایش</a>
+                                <a href="" class="btn btn-danger">آرشیو</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

@@ -1,0 +1,62 @@
+
+@font-face {
+  font-family: 'irsans-no-reg';
+  src: url('../../fonts/iransans/Iransans-No-Reg.eot');
+  src: url('../../fonts/iransans/Iransans-No-Reg.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/iransans/Iransans-No-Reg.woff') format('woff'),
+  url('../../fonts/iransans/Iransans-No-Reg.ttf') format('truetype'),
+  url('../../fonts/iransans/Iransans-No-Reg.svg#iranian_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'irsans';
+src: url('../../fonts/iransans/iransans-Reg.eot');
+src: url('../../fonts/iransans/iransans-Reg.eot?#iefix') format('embedded-opentype'),
+url('../../fonts/iransans/Iransans-Reg.woff') format('woff'),
+url('../../fonts/iransans/Iransans-Reg.ttf') format('truetype'),
+url('../../fonts/iransans/Iransans-Reg.svg#iranian_sansregular') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+  font-family: 'corporate';
+  src: url('../../fonts/corporate/corporate-1.eot');
+  src: url('../../fonts/corporate/corporate-1.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/corporate/corporate-4.woff') format('woff'),
+  url('../../fonts/corporate/corporate-3.ttf') format('truetype'),
+  url('../../fonts/corporate/corporate-2.svg#iranian_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  font-family: 'myraidpro';
+  src: url('../fonts/myriadpro/MYRIADPROREGULAR.eot');
+  src: url('../fonts/myriadpro/MYRIADPROREGULAR.woff') format('woff'),
+    url('../fonts/myriadpro/MYRIADPROREGULAR.ttf') format('truetype');
+
+}
+
+@font-face {
+  font-family: 'persian-sols';
+  src: url('../../fonts/sols/persian-sols.eot');
+  src:url('../../fonts/sols/persian-sols.woff') format('woff'),
+  url('../../fonts/sols/persian-sols.ttf') format('truetype');
+
+}
+
+
+
+
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_4410">Text with this font applied</p> */
+
+
+.sols{
+  font-family: 'persian-sols';
+}

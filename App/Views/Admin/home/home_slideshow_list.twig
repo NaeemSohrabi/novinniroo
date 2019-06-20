@@ -1,0 +1,308 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Home Slideshow{% endblock %}
+
+
+{% block body %}
+
+    <div class="row">
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {#<div class="tab">#}
+                {#<button class="tablinks active" onclick="openLanguage(event, 'en_data')">اطلاعات انگلیسی</button>#}
+                {#<button class="tablinks " onclick="openLanguage(event, 'fa_data')">اطلاعات فارسی</button>#}
+                {#</div>#}
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" id="myTab">
+                    <li role="presentation" class="active"><a href="#en_data" aria-controls="en_data" role="tab"
+                                                              data-toggle="tab">اطلاعات انگلیسی</a></li>
+                    <li role="presentation"><a href="#fa_data" aria-controls="fa_data" role="tab" data-toggle="tab">اطلاعات
+                            فارسی</a></li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <div class="text-center">
+                    <div class="panel-heading " style="background-color: #94C9EE;">افزودن اسلاید جدید</div>
+                </div>
+
+                <div class="tab-content">
+
+                    <div role="tabpanel" id="en_data" class="tab-pane active">
+                        <form action="/admin/home/slideshow/store" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="entity_type" value="home">
+                            <input type="hidden" class="form-control" name="entity_id" value="0">
+                            <input type="hidden" class="form-control" name="entity_position" value="slideshow">
+                            {#<input type="hidden" class="form-control" name="id" value="contact_info">#}
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">عنوان تصویر اسلایدشو: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">توضیح تصویر اسلایدشو: </label>
+                                <div class="col-sm-6">
+                                    <textarea name="description" class=" form-control" rows="10"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">لینک: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="manual" class="form-control" name="link"
+                                           style="text-align: left; direction: ltr">
+                                    <select name="link" id="product-list" class="form-control" disabled
+                                            style="display: none">
+                                        <option value="">انتخاب محصول ...</option>
+                                        {% for value in products %}
+                                            <option value="{{ url('product') }}/{{ value.id }}/review">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select name="link" id="brand-list" class="form-control" disabled
+                                            style="display: none">
+                                        <option value="">انتخاب برند ...</option>
+                                        {% for value in brands %}
+                                            <option value="{{ url('brand') }}/{{ value.id }}/review">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select name="link" id="page-list" class="form-control" disabled
+                                            style="display: none">
+                                        <option value="">انتخاب صفحه ...</option>
+                                        {% for value in pages %}
+                                            <option value="{{ url('page') }}/review/{{ value.slug }}">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="manual-link">انتخاب دستی </label><input type="radio" id="manual-link"
+                                                                                        name="list">
+                                    <label for="product-link">انتخاب محصول </label><input type="radio" id="product-link"
+                                                                                          name="list">
+                                    <label for="brand-link">انتخاب برند </label><input type="radio" id="brand-link"
+                                                                                       name="list">
+                                    <label for="page-link">انتخاب صفحه </label><input type="radio" id="page-link"
+                                                                                      name="list">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">افزودن تصویر اسلایدشو: </label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control" name="media">
+                                </div>
+                                {#<div class="col-sm-3">#}
+                                {#<button type="submit" class="btn btn-primary#}
+                                {#">بارگذاری#}
+                                {#</button>#}
+                                {#</div>#}
+                            </div>
+                            {#</form>#}
+                            <br>
+                            <div class="text-center">
+                                <div class="panel-heading " style="background-color: #94C9EE;">لیست اسلایدها</div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped basic-table">
+                                    <thead>
+                                    <tr>
+                                        <th>ردیف</th>
+                                        <th>عنوان</th>
+                                        <th>وضعیت</th>
+                                        <th>اولویت</th>
+                                        <th>تصویر</th>
+                                        <th><i class="fa fa-cog"></i> تنظیمات</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if medias|length > 0 %}
+                                        {% for media in medias %}
+                                            <tr>
+                                                <td>{{ media.id }}</td>
+                                                <td class="col-sm-2">{{ media.title }}</td>
+                                                <td class="col-sm-6">{{ media.status }}</td>
+                                                <td class="col-sm-6">{{ media.priority }}</td>
+                                                <td><img src="{{ url('uploads') }}/{{ media.file }}" alt="" width="100">
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url('admin/home/slideshow/edit') }}/{{ media.id }}"
+                                                       class="btn btn-primary">ویرایش</a>
+                                                    <a href="{{ url('admin/home/slideshow/delete') }}/{{ media.id }}"
+                                                       class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="5">
+                                                <div class="text-center">!oops not found</div>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                    </div>
+                    <div role="tabpanel" id="fa_data" class="tab-pane fade">
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">عنوان تصویر اسلایدشو: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="fa_title">
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-2 control-label">توضیح تصویر اسلایدشو: </label>
+                                <div class="col-sm-6">
+                                    <textarea name="fa_description" class=" form-control" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            {#<label class="col-sm-2 control-label">افزودن تصویر اسلایدشو: </label>#}
+                            {#<div class="col-sm-6">#}
+                            {#<input type="file" class="form-control" name="media">#}
+                            {#</div>#}
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary
+">بارگذاری
+                                </button>
+                            </div>
+                        </div>
+                        </form>
+                        <br>
+                        <br>
+                        <div class="text-center">
+                            <div class="panel-heading " style="background-color: #94C9EE;">لیست اسلایدها</div>
+                        </div>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped basic-table">
+                                <thead>
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>عنوان</th>
+                                    <th>وضعیت</th>
+                                    <th>اولویت</th>
+                                    <th>تصویر</th>
+                                    <th><i class="fa fa-cog"></i> تنظیمات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if medias|length > 0 %}
+                                    {% for media in medias %}
+                                        <tr>
+                                            <td>{{ media.id }}</td>
+                                            <td>{{ media.fa_title }}</td>
+                                            <td class="col-sm-6">{{ media.status }}</td>
+                                            <td class="col-sm-6">{{ media.priority }}</td>
+                                            <td><img src="{{ url('uploads') }}/{{ media.file }}" alt="" width="100">
+                                            </td>
+                                            <td>
+                                                <a href="{{ url('admin/home/slideshow/edit') }}/{{ media.id }}"
+                                                   class="btn btn-primary">ویرایش</a>
+                                                <a href="{{ url('admin/home/slideshow/delete') }}/{{ media.id }}"
+                                                   class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="text-center">!oops not found</div>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+
+    {#<script>#}
+    {#function openLanguage(evt, language) {#}
+    {#var i, tabcontent, tablinks;#}
+    {#tabcontent = document.getElementsByClassName("tabcontent");#}
+    {#for (i = 0; i < tabcontent.length; i++) {#}
+    {#tabcontent[i].style.display = "none";#}
+    {#}#}
+    {#tablinks = document.getElementsByClassName("tablinks");#}
+    {#for (i = 0; i < tablinks.length; i++) {#}
+    {#tablinks[i].className = tablinks[i].className.replace(" active", "");#}
+    {#}#}
+    {#document.getElementById(language).style.display = "block";#}
+    {#evt.currentTarget.className += " active";#}
+    {#}#}
+    {#</script>#}
+
+    <script>
+        $(document).ready(function () {
+
+            $('#page-link').click(function () {
+                if ($('#page-link').is(':checked')) {
+                    $('#brand-list, #manual, #product-list').attr('disabled', true).hide();
+                    $('#page-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#product-link').click(function () {
+                if ($('#product-link').is(':checked')) {
+                    $('#brand-list, #manual, #page-list').attr('disabled', true).hide();
+                    $('#product-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#brand-link').click(function () {
+                if ($('#brand-link').is(':checked')) {
+                    $('#product-list, #manual, #page-list').attr('disabled', true).hide();
+                    $('#brand-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#manual-link').click(function () {
+                if ($('#manual-link').is(':checked')) {
+                    $('#brand-list, #product-list, #page-list').attr('disabled', true).hide();
+                    $('#manual').attr('disabled', false).show();
+                }
+            });
+        });
+
+    </script>
+
+    <script>
+
+        $(function () {
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+    </script>
+
+{% endblock %}
+
+

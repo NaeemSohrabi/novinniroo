@@ -1,0 +1,162 @@
+{% extends "fa_base.twig" %}
+
+
+{% block title %}نوین نیرو{% endblock %}
+{% block meta_tag %}{{ elements.homemeta.meta_tag_fa }} {% endblock %}
+{% block meta_description %}{{ elements.homemeta.meta_description_fa }} {% endblock %}
+
+{% block body %}
+    {{ include('_templates/fa_header.twig') }}
+
+
+    <section class="slid-show" dir="ltr">
+        <div class="container">
+            <div class="slide-show-container" style="display: none">
+                <div class="slider multiple-items" style="height: 360px">
+                    {% for slide in slideshow %}
+                    {% if slide.status == 'نمایش' %}
+                        <div>
+                            <div class="row">
+                                <div class="slide-text col-sm-5 col-xs-12">
+                                    <div class="slide-title">{{ slide.fa_title }}</div>
+                                    <div class="slide-paragraph content">{{ slide.fa_description|raw }}</div>
+                                    <div class="slide-link"><a href="{{ slide.link }}">ادامه مطلب </a><i class="fa fa-angle-double-left"></i></div>
+                                </div>
+                                <div class="slid-image col-sm-7 ">
+                                    <img src="{{ url('uploads') }}/{{ slide.file }}" class="img-responsive" alt="{{ slide.alt_fa }}">
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                {% if services|length>0 %}
+                    {% for service in services %}
+                {% if service.status == 'نمایش' %}
+                        <div class="col-sm-3">
+                            <div class="services-image">
+                                <!--<img src="/images/poultry.png" alt="">-->
+                                <img src="{{ url('uploads') }}/{{ service.image }}" alt="{{ service.alt_fa }}">
+                            </div>
+                            <div class="services-title">{{ service.fa_title }}</div>
+                            <div class="services-sub content">{{ service.fa_description|raw }}</div>
+                            <div class="services-more"><a href="{{ service.link }}">بیشتر ...</a></div>
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+    <section class="why-novin">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-xs-12">
+                    <div class="why-title">{{ elements.middel_section.fa_title }}</div>
+                    <div class="why-sub mCustomScrollbar content">{{ elements.middel_section.fa_description }}</div>
+                    <div class="why-more"><a href="{{ elements.middel_section.link }}">بیشتر...</a></div>
+                </div>
+                <div class="col-sm-9 hidden-xs">
+                    <img class="why-image img-responsive"
+                         src="{{ url('uploads') }}/{{ elements.middel_section.image }}" alt="{{ elements.middel_section.alt_fa }}">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="customers">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-xs-12">
+                    <div class="customers-title">{{ elements.customer_text.fa_title }}</div>
+                    <div class="customers-sub">{{ elements.customer_text.fa_description }}</div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="customer-slid">
+                        {% for customer in customers %}
+                            <div class="col-sm-2 col-xs-3">
+                                <div class="customers-image">
+                                    <img src="{{ url('uploads') }}/{{ customer.logo }}" alt="{{ customer.alt_fa }}">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ include('_templates/fa_footer.twig') }}
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('.multiple-items').slick({
+            autoplay: true,
+            dots: true,
+            infinite: true,
+            speed: 900,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            arrows: false,
+            fade: true,
+            ltr: true
+        });
+        $('.slide-show-container').show()
+
+    </script>
+
+    <script>
+        $('.customer-slid').slick({
+            autoplay: true,
+            infinite: true,
+            speed: 300,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+        $('.slide-show-container').show()
+    </script>
+
+
+{% endblock %}

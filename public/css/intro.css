@@ -1,0 +1,262 @@
+@font-face {
+  font-family: 'irsans-no-reg';
+  src: url("../../fonts/iransans/Iransans-No-Reg.eot");
+  src: url("../../fonts/iransans/Iransans-No-Reg.eot?#iefix") format("embedded-opentype"), url("../../fonts/iransans/Iransans-No-Reg.woff") format("woff"), url("../../fonts/iransans/Iransans-No-Reg.ttf") format("truetype"), url("../../fonts/iransans/Iransans-No-Reg.svg#iranian_sansregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'irsans';
+  src: url("../../fonts/iransans/iransans-Reg.eot");
+  src: url("../../fonts/iransans/iransans-Reg.eot?#iefix") format("embedded-opentype"), url("../../fonts/iransans/Iransans-Reg.woff") format("woff"), url("../../fonts/iransans/Iransans-Reg.ttf") format("truetype"), url("../../fonts/iransans/Iransans-Reg.svg#iranian_sansregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'corporate';
+  src: url("../../fonts/corporate/corporate-1.eot");
+  src: url("../../fonts/corporate/corporate-1.eot?#iefix") format("embedded-opentype"), url("../../fonts/corporate/corporate-4.woff") format("woff"), url("../../fonts/corporate/corporate-3.ttf") format("truetype"), url("../../fonts/corporate/corporate-2.svg#iranian_sansregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'myraidpro';
+  src: url("../fonts/myriadpro/MYRIADPROREGULAR.eot");
+  src: url("../fonts/myriadpro/MYRIADPROREGULAR.woff") format("woff"), url("../fonts/myriadpro/MYRIADPROREGULAR.ttf") format("truetype"); }
+@font-face {
+  font-family: 'persian-sols';
+  src: url("../../fonts/sols/persian-sols.eot");
+  src: url("../../fonts/sols/persian-sols.woff") format("woff"), url("../../fonts/sols/persian-sols.ttf") format("truetype"); }
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_4410">Text with this font applied</p> */
+.sols {
+  font-family: 'persian-sols'; }
+
+body h3 {
+  margin: 0; }
+
+.hover-hide {
+  display: block;
+  transition: opacity 1s ease-out;
+  opacity: 1; }
+
+.hover-show {
+  display: block;
+  transition: opacity 1s ease-in;
+  opacity: 0; }
+
+.hover-show:hover {
+  display: block;
+  opacity: 1; }
+
+.hover-hide:hover {
+  display: none;
+  opacity: 0; }
+
+.alert {
+  padding: 10px;
+  color: #fff; }
+  .alert.success {
+    background: green; }
+  .alert.error {
+    background: red; }
+
+.card-panel {
+  position: relative;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  z-index: 0; }
+
+html {
+  background: linear-gradient(to bottom, #e5e5e5 0%, #ffffff 100%);
+  border-image: linear-gradient(to bottom, white, rgba(0, 0, 0, 0)) 1 100%; }
+
+body {
+  background-color: transparent; }
+
+* {
+  box-sizing: border-box; }
+
+.adob-arabic {
+  font-family: "Adobe Arabic";
+  font-size: 18pt; }
+
+.introo {
+  height: 100vh;
+  background-color: #eeeeee;
+  background-image: url("../images/intro-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  z-index: 0; }
+  .introo .mb-5 {
+    margin-bottom: 90px !important; }
+  .introo .content {
+    padding-top: 150px; }
+  .introo .logo {
+    text-align: center; }
+    .introo .logo img {
+      margin: 50px auto 50px auto;
+      width: 300px; }
+  .introo .layer:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    z-index: -1; }
+  .introo .dropdown .dropdown-menu {
+    right: 0;
+    text-align: center;
+    margin: auto;
+    border: unset !important;
+    box-shadow: unset !important;
+    background-color: transparent;
+    transform: translate3d(0px, 57px, 0px) !important; }
+    .introo .dropdown .dropdown-menu .dropdown-item {
+      height: 35px;
+      color: white;
+      font-size: 20px;
+      background-color: transparent; }
+      .introo .dropdown .dropdown-menu .dropdown-item:hover {
+        background-color: transparent; }
+      .introo .dropdown .dropdown-menu .dropdown-item:hover {
+        font-size: 25px;
+        transition: font-size 200ms; }
+  .introo .dropdown .btn-secondary {
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+    font-size: 30px;
+    text-shadow: 0 0 20px #6ec6f1; }
+    .introo .dropdown .btn-secondary:focus {
+      background-color: transparent;
+      border: unset;
+      color: white; }
+    .introo .dropdown .btn-secondary:active {
+      background-color: transparent;
+      border: unset;
+      color: white; }
+    .introo .dropdown .btn-secondary::selection {
+      background-color: transparent;
+      border: unset;
+      color: white; }
+  .introo .slogan {
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 0 20px #6ec6f1;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0; }
+  .introo .bg-trp {
+    background-color: transparent !important; }
+
+#admin {
+  direction: rtl;
+  font-family: irsans-no-reg; }
+  #admin .modal-dialog .modal-content {
+    background: linear-gradient(to bottom, #e5e5e5 0%, #ffffff 100%);
+    border-image: linear-gradient(to bottom, white, rgba(0, 0, 0, 0)) 1 100%; }
+    #admin .modal-dialog .modal-content .modal-header img {
+      width: 35%;
+      float: left; }
+    #admin .modal-dialog .modal-content .modal-body .panel-heading {
+      background-color: #94C9EE; }
+    #admin .modal-dialog .modal-content .modal-body .btn-login {
+      color: white;
+      background-color: #192948 !important; }
+
+@media (max-width: 986px) {
+  /* For mobile phones: */
+  .content {
+    padding-top: 40px !important; }
+
+  .slogan {
+    font-size: 20px; }
+
+  .introo .logo img {
+    margin: 0 auto 50px auto; }
+
+  [class*="col-"] {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px !important; }
+    [class*="col-"] img {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto; }
+
+  .arab-logo img {
+    float: unset !important; }
+
+  .intro {
+    padding-top: 40px !important; }
+    .intro .welcom {
+      padding-top: 30px !important; }
+      .intro .welcom .persian {
+        font-size: 13.5pt !important; }
+    .intro .text-inverce ul, .intro .text ul {
+      list-style: none;
+      padding-top: 20px !important;
+      font-size: 14pt; }
+      .intro .text-inverce ul li, .intro .text ul li {
+        display: inline-block; }
+        .intro .text-inverce ul li a, .intro .text ul li a {
+          color: #192948;
+          text-decoration: none;
+          margin: 0 !important;
+          padding-right: 30px;
+          padding-left: 30px; }
+          .intro .text-inverce ul li a:hover, .intro .text ul li a:hover {
+            color: #83c5ed; } }
+@media (max-width: 768px) {
+  /* For mobile phones: */
+  .introo .logo img {
+    margin: 0 auto 50px auto; }
+
+  .content {
+    padding-top: 40px !important; }
+
+  .slogan {
+    font-size: 20px !important; }
+
+  [class*="col-"] {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px !important; }
+    [class*="col-"] img {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto; }
+
+  .intro {
+    padding-top: 40px !important; }
+    .intro .welcom {
+      padding-top: 30px !important; }
+      .intro .welcom .persian {
+        font-size: 13.5pt !important; }
+      .intro .welcom .english {
+        font-size: 8.8pt !important; }
+      .intro .welcom .arabic {
+        font-size: 14pt !important; }
+    .intro .text-inverce ul, .intro .text ul {
+      list-style: none;
+      padding-top: 20px !important;
+      font-size: 9pt; }
+      .intro .text-inverce ul li, .intro .text ul li {
+        display: inline-block; }
+        .intro .text-inverce ul li a, .intro .text ul li a {
+          color: #192948;
+          text-decoration: none;
+          margin: 0 !important;
+          padding-right: 30px;
+          padding-left: 30px; }
+          .intro .text-inverce ul li a:hover, .intro .text ul li a:hover {
+            color: #83c5ed; }
+    .intro .copy-rule p {
+      font-size: 8pt; } }
+@media only screen and (orientation: landscape) {
+  .intro .copy-rule {
+    margin-top: 100px; } }

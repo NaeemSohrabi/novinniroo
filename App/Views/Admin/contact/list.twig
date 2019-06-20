@@ -1,0 +1,63 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Contact List{% endblock %}
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header pull-left">
+                <a href="{{url('admin/contact/insert')}}" class="btn btn-success"><i class="fa fa-edit fa-lg"></i> ثبت دفتر جدید</a>
+            </div>
+        </div>
+        <!-- /.panel -->
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <!-- /.panel-heading -->
+                <div class="text-center" >
+                    <div class="panel-heading " style="background-color: #94C9EE;">لیست دفاتر</div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>نام دفتر</th>
+                                <th><i class="fa fa-cog"></i> تنظیمات</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if contacts|length > 0 %}
+                                {% for contact in contacts %}
+                                    <tr>
+                                        <td>{{ contact.id }}</td>
+                                        <td>{{ contact.fa_name }}/ {{ contact.en_name }}</td>
+                                        <td>
+                                            <a href="{{ url('admin/contact/edit') }}/{{ contact.id }}" class="btn btn-primary">ویرایش</a>
+                                            <a href="{{ url('admin/contact/delete') }}/{{ contact.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                !oops not found
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+

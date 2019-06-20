@@ -1,0 +1,114 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}News Insert{% endblock %}
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">افزودن خبر</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="tab">
+                        <button class="tablinks  active" onclick="openLanguage(event, 'data')">اطلاعات انگلیسی</button>
+                        <button class="tablinks" onclick="openLanguage(event, 'fa_data')">اطلاعات فارسی</button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form action="/admin/news/store" class="form-horizontal" method="post"
+                          enctype="multipart/form-data">
+                        <div id="data" class="tabcontent active" style="display: block;">
+
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label col-lg-offset-0">عنوان انگلیسی خبر: </label>
+                                <div class="col-sm-4">
+                                    <input dir="ltr" type="text" class="form-control" name="title" placeholder="title"
+                                           value="">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>متن انگلیسی خبر</h4>
+                                <div class="form-group">
+                                <textarea class="description" name="description"
+                                          placeholder="Summary..."></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="ln-solid"></div>
+                            <div class="form-group">
+                                <br>
+                                <label for="exampleInputFile">عکس خبر</label>
+                                <input type="file" id="exampleInputFile" name="image">
+                            </div>
+                            <br>
+                            {#<div class="image-gallery col-lg-offset-1">#}
+                                {#<div class="col-sm-3">#}
+                                    {#<div class="image">#}
+                                        {#<img src="{{ url('uploads') }}/{{ news.image }}" alt="">#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                            <div class="ln-solid"></div>
+                            <div class="col-lg-offset-1">
+                                <button class="btn btn-primary" type="submit">افزودن خبر</button>
+                                <button class="btn btn-danger" onclick="history.go(-1);">انصراف</button>
+                            </div>
+                            {#</form>#}
+                        </div>
+
+                        <div id="fa_data" class="tabcontent">
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label col-lg-offset-0">عنوان فارسی خبر: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="fa_title" placeholder="عنوان"
+                                           value="">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>متن فارسی خبر</h4>
+                                <div class="form-group">
+                                <textarea class="description" name="fa_description"
+                                          placeholder="Summary..."></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="ln-solid"></div>
+                            <div class="col-lg-offset-1">
+                                <button class="btn btn-primary" type="submit">افزودن خبر</button>
+                                <button class="btn btn-danger" onclick="history.go(-1);">انصراف</button>
+                            </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        function openLanguage(evt, language) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(language).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+{% endblock %}

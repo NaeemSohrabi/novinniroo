@@ -1,0 +1,84 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Admin List{% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <a href="{{url('admin/user/insert')}}" class="btn btn-success pull-left"><i class="fa fa-edit fa-lg"></i>  ثبت مدیر جدید</a>
+        <h1>لیست مدیرها</h1>
+        </div>
+
+    </div>
+
+    <!-- /.panel -->
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            {#<th>ردیف</th>#}
+                            <th>نام مدیر</th>
+                            <th><i class="fa fa-cog"></i> تنظیمات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if users|length > 0 %}
+                        {% for user in users %}
+                        <tr>
+                            {#<td>{{ user.id }}</td>#}
+                            <td>{{ user.title }}</td>
+                            <td>
+                                <a href="{{ url('admin/edit') }}/{{ user.id }}" class="btn btn-primary">ویرایش</a>
+                                <a href="{{ url('admin/user/delete') }}/{{ user.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        !oops not found
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+    $(document).ready(function() {
+        $('.description').summernote({
+            height: 200
+        });
+    });
+
+</script>
+
+<script>
+    function openLanguage(evt, language) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(language).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+{% endblock %}

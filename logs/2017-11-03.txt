@@ -1,0 +1,77 @@
+[03-Nov-2017 13:05:12 Asia/Tehran] Uncaught exception: 'ErrorException' with message 'Cannot modify header information - headers already sent by (output started at /home/novinnir/public_html/library/library.php:40)'
+Stack trace: #0 [internal function]: Core\Error::errorHandler(2, 'Cannot modify h...', '/home/novinnir/...', 77, Array)
+#1 /home/novinnir/public_html/App/Controllers/AdminBrand.php(77): header('Location: http:...')
+#2 [internal function]: App\Controllers\AdminBrand->updateAction()
+#3 /home/novinnir/public_html/Core/Controller.php(48): call_user_func_array(Array, Array)
+#4 /home/novinnir/public_html/Core/Router.php(121): Core\Controller->__call('update', Array)
+#5 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/upd...')
+#6 {main}
+Thrown in '/home/novinnir/public_html/App/Controllers/AdminBrand.php' on line 77
+[03-Nov-2017 13:05:12 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:12 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:12 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:13 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:13 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:13 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:13 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:13 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:13 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:13 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:13 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:14 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:14 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:15 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:15 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:16 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130
+[03-Nov-2017 13:05:16 Asia/Tehran] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 /home/novinnir/public_html/public/index.php(80): Core\Router->dispatch('admin/brand/js/...')
+#1 {main}
+Thrown in '/home/novinnir/public_html/Core/Router.php' on line 130

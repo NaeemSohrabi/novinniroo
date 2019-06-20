@@ -1,0 +1,132 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Employee Insert{% endblock %}
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">افزودن عضو</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="tab">
+                        ویرایش اطلاعات
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form action="/admin/employee/update" class="form-horizontal" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" class="form-control" name="id" value="{{ employee.id }}">
+
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-offset-0">نام به انگلیسی: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="name" placeholder="name"
+                                value="{{ employee.name }}" dir="ltr">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-offset-0">نام خانوادگی به انگلیسی: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="family" placeholder="family"
+                                       value="{{ employee.family }}" dir="ltr">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-offset-0">نام به فارسی: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="fa_name" placeholder="نام"
+                                       value="{{ employee.fa_name }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-offset-0">نام خانوادگی به فارسی: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="fa_family" placeholder="نام خانوادگی"
+                                       value="{{ employee.fa_family }}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-offset-0">قسمت مشغول به کار به
+                                انگلیسی: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="department" placeholder="department"
+                                       value="{{ employee.department }}" dir="ltr">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-offset-0">قسمت مشغول به کار به
+                                فارسی: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="fa_department" placeholder="حوزه کاری"
+                                       value="{{ employee.fa_department }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-offset-0">ایمیل: </label>
+                            <div class="col-sm-4">
+                                <input type="email" class="form-control" name="email" placeholder="ایمیل"
+                                       value="{{ employee.email }}" dir="ltr">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-offset-0">تلفن: </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="phone" placeholder="تلفن"
+                                       value="{{ employee.phone }}" dir="ltr">
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="ln-solid"></div>
+                        <div class="col-sm-offset-1">
+                            <div class="form-group">
+                                <label for="exampleInputFile">عکس عضو</label>
+                                <input type="file" id="exampleInputFile" name="image">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="image-gallery col-lg-offset-1">
+                            <div class="col-sm-3">
+                                <div class="image">
+                                    <img src="{{ url('uploads') }}/{{ employee.image }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ln-solid"></div>
+                        <div class="col-lg-offset-1">
+                            <button class="btn btn-primary" type="submit">ویرایش عضو</button>
+                            <button class="btn btn-danger" onclick="history.go(-1);">انصراف</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        function openLanguage(evt, language) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(language).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+{% endblock %}

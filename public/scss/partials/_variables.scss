@@ -1,0 +1,68 @@
+$primary-font: 'irsans-no-reg', monospace, tahoma;
+$primary-size: 12px;
+
+$menu-color:#128c9b;
+$menu-darker-color: #126877;
+$menu-lighter-color: #12a8b7;
+
+$text-color: #32394c;
+
+//$primary-color: #15944d;
+$primary-color: $menu-color;
+//$primary-darker-color: #12783c;
+$primary-darker-color: $menu-darker-color;
+//$primary-lighter-color: #39be74;
+$primary-lighter-color: $menu-lighter-color;
+$secondary-color: #454a5f;
+$secondary-darker-color: #2e2e3d;
+$background-color: #f9f9f9;
+//$third-color: #ffae3b;
+$third-color: #ff9e14;
+//$third-darker-color: #e09737;
+$third-darker-color: #d47e0d;
+
+$red-color: #ff5253;
+$blue-color: #00DAB0;
+$gray-color: #999;
+$yellow-color: #FFDD4D;
+
+$green-cover-color: rgba(18, 109, 124, 0.75);
+
+$tour-price-color: #FD3F3F;
+$tour-discount-color: #767475;
+
+
+$scroll_spy_container: 69px;
+
+$border_radius: 4px;
+
+$text-shadow: 0 0 6px rgba(0, 0, 0, 0.75);
+
+$panel_sidebar_width: 240px;
+$panel_primary_color: #5C2097;
+$panel_second_color: #00DAB0;
+
+
+//novin niroo colors variables
+
+$novin-dark-blue: #192948;
+$novin-light-blue: #94C9EE;
+$gray-devider: #E6E7E8;
+$description-size: 10pt;
+
+//novin niroo fonts variables
+$novin-praimary-size: 12pt;
+$novin-title-size: 18pt;
+$novin-desc-size: 10pt;
+
+@mixin card-border() {
+  border: 1px solid #e1e1e1;
+  border-radius: $border_radius;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0, 0.1);
+}
+
+@mixin unselectable() {
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}

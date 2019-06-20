@@ -1,0 +1,105 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}Product List{% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+            <a href="{{url('admin/product/insert')}}" class="btn btn-success"><i class="fa fa-edit fa-lg"></i>  ثبت محصول جدید</a>
+        </div>
+        <!--<form action="" class="form-horizontal" method="get">-->
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-2 control-label">نام محصول: </label>-->
+                <!--<div class="col-sm-6">-->
+                    <!--<input type="text" class="form-control" placeholder="نام">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<div class="col-sm-offset-2 col-sm-10">-->
+                    <!--<a href="" class="btn btn-success">جستجوی محصول</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+        <!--<h1 class="page-header">لیست محصولات</h1>-->
+    </div>
+
+    <!-- /.panel -->
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <!-- /.panel-heading -->
+            <div class="text-center" >
+                <div class="panel-heading " style="background-color: #94C9EE;">لیست محصولات</div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ردیف</th>
+                            <th>نام محصول</th>
+                            <th>برند</th>
+                            <th><i class="fa fa-cog"></i> تنظیمات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if products|length > 0 %}
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.title }}</td>
+                            <td>{{ product.brand_id }}</td>
+                            <td>
+
+                                <a href="{{ url('admin/product/edit') }}/{{ product.id }}" class="btn btn-primary">ویرایش</a>
+                                <a href="{{ url('admin/product/delete') }}/{{ product.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        !oops not found
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+    $(document).ready(function() {
+        $('.description').summernote({
+            height: 200
+        });
+    });
+
+</script>
+
+<script>
+    function openLanguage(evt, language) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(language).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+
+
+{% endblock %}

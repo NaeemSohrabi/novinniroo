@@ -1,0 +1,375 @@
+@import "partials/_font";
+@import "partials/_general";
+@import "partials/_variables";
+
+//html{
+//  min-height: 100%!important;
+//  height: 100%!important;
+//}
+html {
+  background: linear-gradient(to bottom, #e5e5e5 0%, #ffffff 100%);
+  //border: 3px solid black;
+  border-image: linear-gradient(to bottom, white, rgba(0, 0, 0, 0)) 1 100%;
+  //min-height: 100%!important;
+}
+
+body {
+  background-color: transparent;
+  //min-height: 100%!important;
+  //height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.adob-arabic {
+  font-family: "Adobe Arabic";
+  font-size: 18pt;
+}
+
+
+
+.introo {
+  height: 100vh;
+  background-color: #eeeeee;
+  background-image: url("../images/intro-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  //height: 100vh;
+  position: relative;
+  z-index: 0;
+  //display: flex;
+
+  .mb-5{
+    margin-bottom: 90px!important;
+  }
+
+  .content {
+    padding-top: 250px;
+    //position: absolute;
+    //margin: auto;
+    //left: 0;
+    //right: 0;
+    ////width: 80%;
+    //top: 0;
+    //bottom: 0;
+    //height: 50%;
+  }
+
+  .logo {
+    text-align: center;
+
+    img{
+    margin: 50px auto 50px auto;
+      width: 300px;
+    }
+
+  }
+
+  .layer {
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .7);
+      top: 0;
+      right: 0;
+      z-index: -1;
+    }
+  }
+
+  .dropdown {
+
+    .dropdown-menu {
+      right: 0;
+      text-align: center;
+      margin: auto;
+      //width: 200px;
+      border: unset !important;
+      box-shadow: unset !important;
+      background-color: transparent;
+      transform: translate3d(0px, 57px, 0px)!important;
+      //background-color: #0e284a;
+
+
+      .dropdown-item {
+
+        height: 35px;
+        color: white;
+        font-size: 20px;
+        background-color: transparent;
+
+        &:hover {
+          background-color: transparent;
+        }
+
+          &:hover {
+            font-size: 25px;
+            transition: font-size 200ms;
+          }
+
+      }
+
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border-color: transparent;
+      font-size: 30px;
+      text-shadow: 0 0 20px #6ec6f1;
+
+      &:focus {
+        background-color: transparent;
+        border: unset;
+        color: white;
+      }
+
+      &:active {
+        background-color: transparent;
+        border: unset;
+        color: white;
+      }
+
+      &::selection{
+        background-color: transparent;
+        border: unset;
+        color: white;
+      }
+
+    }
+
+  }
+
+  .slogan{
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 0 20px #6ec6f1;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+  }
+
+  .bg-trp{
+    background-color: transparent!important;
+
+  }
+
+}
+
+#admin {
+  direction: rtl;
+  font-family: irsans-no-reg;
+
+  .modal-dialog {
+    .modal-content {
+      background: linear-gradient(to bottom, #e5e5e5 0%, #ffffff 100%);
+      //border: 3px solid black;
+      border-image: linear-gradient(to bottom, white, rgba(0, 0, 0, 0)) 1 100%;
+      .modal-header {
+        img {
+          width: 35%;
+          float: left;
+        }
+      }
+      .modal-body {
+        .panel-heading {
+          background-color: $novin-light-blue;
+        }
+        .btn-login {
+          color: white;
+          background-color: $novin-dark-blue !important;
+        }
+      }
+      .modal-footer {
+
+      }
+    }
+  }
+}
+
+@media (max-width: 986px) {
+  /* For mobile phones: */
+
+  .content{
+    padding-top: 40px!important;
+  }
+
+  .slogan{
+    font-size: 20px;
+    //bottom: 5px!important;
+  }
+
+  .introo{
+
+    .logo{
+      img{
+        margin: 0 auto 50px auto;
+      }
+    }
+
+  }
+
+  [class*="col-"] {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px !important;
+    img {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .arab-logo {
+    img {
+      float: unset !important;
+    }
+  }
+  .intro {
+    padding-top: 40px !important;
+
+    .welcom {
+      padding-top: 30px !important;
+      .persian {
+        font-size: 13.5pt !important;
+      }
+      .english {
+        //font-size: 15pt!important;
+      }
+      .arabic {
+        //font-size: 15pt!important;
+      }
+    }
+    .text-inverce, .text {
+      ul {
+        list-style: none;
+        padding-top: 20px !important;
+        font-size: 14pt;
+        li {
+          display: inline-block;
+          a {
+            color: $novin-dark-blue;
+            text-decoration: none;
+            margin: 0 !important;
+            //padding: 40px!important;
+            padding-right: 30px;
+            padding-left: 30px;
+            &:hover {
+              color: #83c5ed;
+
+            }
+          }
+          &:first-child {
+            a {
+              //margin-left: 50px!important;
+              //margin-right: 165px!important;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+  /* For mobile phones: */
+
+  .introo{
+
+    .logo{
+      img{
+        margin: 0 auto 50px auto;
+      }
+    }
+
+  }
+
+  .content{
+    padding-top: 40px!important;
+  }
+
+  .slogan{
+    font-size: 20px!important;
+    //bottom: 5px!important;
+  }
+
+  [class*="col-"] {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px !important;
+    img {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .intro {
+    padding-top: 40px !important;
+
+    .welcom {
+      padding-top: 30px !important;
+      .persian {
+        font-size: 13.5pt !important;
+      }
+      .english {
+        font-size: 8.8pt !important;
+      }
+      .arabic {
+        font-size: 14pt !important;
+      }
+    }
+    .text-inverce, .text {
+      ul {
+        list-style: none;
+        padding-top: 20px !important;
+        font-size: 9pt;
+        li {
+          display: inline-block;
+          a {
+            color: $novin-dark-blue;
+            text-decoration: none;
+            margin: 0 !important;
+            //padding: 40px!important;
+            padding-right: 30px;
+            padding-left: 30px;
+            &:hover {
+              color: #83c5ed;
+
+            }
+          }
+          &:first-child {
+            a {
+              //margin-left: 50px!important;
+              //margin-right: 165px!important;
+            }
+          }
+        }
+
+      }
+    }
+    .copy-rule {
+      p {
+        font-size: 8pt;
+      }
+    }
+  }
+
+}
+
+@media only screen and(orientation: landscape) {
+  .intro {
+    .copy-rule {
+      //position:relative!important;
+      margin-top: 100px;
+    }
+  }
+
+}

@@ -1,0 +1,268 @@
+{% extends "en_base.twig" %}
+{% block title %}Contact Us{% endblock %}
+{% block body %}
+    {{ include('_templates/en_header.twig') }}
+
+
+
+    <section class="world hidden-xs">
+        <div class="container">
+            <div class="world-map-wrapper">
+                {#<img src="/images/World-Map.png" alt="">#}
+                <div class="oman-pin">
+                    <a href="#oman"><i class="fa fa-map-marker change-color" aria-hidden="true" style="font-size: 20px"></i></a>
+                </div>
+                <div class="iran-pin">
+                    <a href="#iran"><i class="fa fa-map-marker change-color" aria-hidden="true" style="font-size: 25px"></i></a>
+                </div>
+                <div class="london-pin">
+                    <a href="#london"><i class="fa fa-map-marker change-color" aria-hidden="true" style="font-size: 27px"></i></a>
+                </div>
+            </div>
+            {#<div id="worldmap" class="worldmap"></div>#}
+        </div>
+    </section>
+
+
+    <section class="central-office contact-info" id="iran">
+        <div class="container">
+            <div class="contact-info-wrapper">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contact-data">
+                            <ul>
+                                <li class="title">Central Office Address:</li>
+                                <li class="address">{{ elements.contact_info.address }}</li>
+                                <li class="telephone aaa">Tel: {{ elements.contact_info.telephone }}</li>
+                                <li class="fax aaa">Fax: {{ elements.contact_info.fax }}</li>
+                                <li class="cell">Cell: {{ elements.contact_info.cell }}</li>
+                                <li class="email">Email: {{ elements.contact_info.email }}</li>
+                                <li class="web"><a href="">Web: {{ elements.contact_info.web }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="centralmap" class="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="muscat-office contact-info" id="oman">
+        <div class="container">
+            <div class="contact-info-wrapper">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contact-data">
+                            <ul>
+                                <li class="title">Muscat Office Address:</li>
+                                <li class="address">{{ elements.om_contact_info.om_address }}</li>
+                                <li class="telephone aaa">Tel: {{ elements.om_contact_info.om_telephone }}</li>
+                                <li class="fax aaa">Fax: {{ elements.om_contact_info.om_fax }}</li>
+                                <li class="cell">Cell: {{ elements.om_contact_info.om_cell }}</li>
+                                <li class="email">Email: {{ elements.om_contact_info.om_email }}</li>
+                                <li class="web"><a href="">Web: {{ elements.om_contact_info.om_web }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="muscatmap" class="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="london-office contact-info" id="london">
+        <div class="container">
+            <div class="contact-info-wrapper">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contact-data">
+                            <ul>
+                                <li class="title">London Office Address:</li>
+                                <li class="address">{{ elements.ln_contact_info.ln_address }}</li>
+                                <li class="telephone aaa">Tel: {{ elements.ln_contact_info.ln_telephone }}</li>
+                                <li class="fax aaa">Fax: {{ elements.ln_contact_info.ln_fax }}</li>
+                                <li class="cell">Cell:{{ elements.ln_contact_info.ln_cell }}</li>
+                                <li class="email">Email: {{ elements.ln_contact_info.ln_email }}</li>
+                                <li class="web"><a href="">Web: {{ elements.ln_contact_info.ln_web }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="londonmap" class="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="title">Contact Us Form:</div>
+                    <div class="request">You can contact us through this form</div>
+                    <div class="request">Please enter your contact information and request</div>
+                    <div class="request">Our colleagues will contact you as soon as possible</div>
+                    <div class="image hidden-xs">
+                        <img src="/images/telecontact.png" class="img-responsive center-block">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <form action="contact/email" method="post" required class="" id="contact-form"
+                          onsubmit="return false;">
+                        <div class="form-group">
+                            <input type="text" name="name" required class="form-control input-control"
+                                   id="exampleInputEmail1"
+                                   placeholder="Name/Surname">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="tel" required class="form-control input-control"
+                                   id="exampleInputEmail1"
+                                   placeholder="Tel">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" required class="form-control input-control"
+                                   id="exampleInputEmail1"
+                                   placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <select name="department" id="" class="form-control">
+                                {#{% for name, email in departments %}#}
+                                {#<option value="{{ email }}">{{ name }}</option>#}
+                                {#{% endfor %}#}
+                                {% if elements.contact_emails.email_1 is not empty %}<option value="{{ elements.contact_emails.email_1 }}">{{ elements.contact_emails.name_1 }}</option>{% endif %}
+                                {% if elements.contact_emails.email_2 is not empty %}<option value="{{ elements.contact_emails.email_2 }}">{{ elements.contact_emails.name_2 }}</option>{% endif %}
+                                {% if elements.contact_emails.email_3 is not empty %}<option value="{{ elements.contact_emails.email_3 }}">{{ elements.contact_emails.name_3 }}</option>{% endif %}
+                                {% if elements.contact_emails.email_4 is not empty %}<option value="{{ elements.contact_emails.email_4 }}">{{ elements.contact_emails.name_4 }}</option>{% endif %}
+                                {% if elements.contact_emails.email_5 is not empty %}<option value="{{ elements.contact_emails.email_5 }}">{{ elements.contact_emails.name_5 }}</option>{% endif %}
+                                {% if elements.contact_emails.email_6 is not empty %}<option value="{{ elements.contact_emails.email_6 }}">{{ elements.contact_emails.name_6 }}</option>{% endif %}
+                                {% if elements.contact_emails.email_7 is not empty %}<option value="{{ elements.contact_emails.email_7 }}">{{ elements.contact_emails.name_7 }}</option>{% endif %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Message" name="message"
+                                      required></textarea>
+                        </div>
+                        <div class="row">
+                            {#<div class="col-sm-4">#}
+                            {#<div class="form-group">#}
+                            {#<input type="text" name="code" class="form-control text-center"#}
+                            {#id="exampleInputEmail1"#}
+                            {#placeholder="Random"></div>#}
+                            {#</div>#}
+                            {#<div class="col-sm-4">#}
+                            {#<div class="form-group">#}
+                            {#<input type="text" name="code" class="form-control text-center"#}
+                            {#id="exampleInputEmail1"#}
+                            {#placeholder="Type the code">#}
+                            {#</div>#}
+                            {#</div>#}
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-send pull-right btn-block" value="SEND">
+                                </div>
+                            </div>
+                            {#<div class="col-sm-4">#}
+                            {#<div class="form-group">#}
+                            {#<input type="image" id="captcha_vms" src="mkcapcha">#}
+                            {#</div>#}
+                            {#</div>#}
+                            {#<div class="col-sm-4">#}
+                            {#<div class="form-group">#}
+                            {#<input type="text" id="result_vms" name="result_vms" value="Type the Code">#}
+                            {#</div>#}
+                            {#</div>#}
+
+                            <div class="col-sm-8 message" style="display: none">
+                                <div class="">Message has been sent successfully.</div>
+                            </div>
+                        </div>
+                        {#<div class="form-group">#}
+                        {#<button type="submit" class="btn btn-send col-sm-3">SEND</button>#}
+                        {#<input type="text" class="form-control text-center col-sm-3" name="code" placeholder="Type the Code">#}
+                        {#</div>#}
+
+                    </form>
+                </div>
+            </div><!--row-->
+        </div><!--container-->
+    </section>
+
+    {{ include('_templates/en_footer.twig') }}
+
+
+
+
+
+{% endblock %}
+
+    {% block script %}
+        <script>
+            function initMap() {
+                var uluru1 = {lat: {{ elements.ln_contact_info.ln_lat }}, lng: {{ elements.ln_contact_info.ln_lang }}};
+                var map1 = new google.maps.Map(document.getElementById('londonmap'), {
+                    zoom: 14,
+                    center: uluru1
+                });
+                var marker1 = new google.maps.Marker({
+                    position: uluru1,
+                    map: map1
+                });
+
+                var uluru2 = {lat: {{ elements.contact_info.lat }}, lng: {{ elements.contact_info.lang }}};
+                var map2 = new google.maps.Map(document.getElementById('centralmap'), {
+                    zoom: 14,
+                    center: uluru2
+                });
+                var marker2 = new google.maps.Marker({
+                    position: uluru2,
+                    map: map2
+                });
+
+                var uluru3 = {lat: {{ elements.om_contact_info.om_lat }}, lng: {{ elements.om_contact_info.om_lang }}};
+                var map3 = new google.maps.Map(document.getElementById('muscatmap'), {
+                    zoom: 14,
+                    center: uluru3
+                });
+                var marker3 = new google.maps.Marker({
+                    position: uluru3,
+                    map: map3
+                });
+
+                var uluru4 = {lat: {{elements.contact_info.lat}} , lng: {{elements.contact_info.lang}}};
+                var map4 = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 14,
+                    center: uluru4
+                });
+                var marker = new google.maps.Marker({
+                    position: uluru4,
+                    map: map4
+                });
+            }
+        </script>
+
+        {#email NOTE#}
+        <script>
+            $(document).on('submit', 'form', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/contact/email",
+                    data: $("form").serialize(),
+//                dataType: 'json',
+                    success: function (dataString) {
+                        $('.message').fadeIn();
+                        console.log(dataString);
+                    }
+//                error: function (request, status, error) {
+//                    alert(request.responseText);
+//                }
+                });
+            });
+        </script>
+    {% endblock %}

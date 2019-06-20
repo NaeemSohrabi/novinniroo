@@ -1,0 +1,93 @@
+<section class="footer">
+    <div class="container">
+        <div class="footer-logo hidden-xs">
+            <img src="/images/Logo-Header.png" alt="" class="img-responsive">
+        </div>
+        <div class="row">
+            <div class="col-sm-4 visible-lg">
+                <div id="map" style="height: 200px; width: 100%"></div>
+                <div class="footer-social">
+                    <ul>
+                        <li><a href="#"><i class="icon icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon icon-google"></i></a></li>
+                        <li><a href="#"><i class="icon icon-linkdin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3 hidden-xs">
+                <div class="footer-address">
+                    <ul>
+                        <li class="title">Central Office Address:</li>
+                        <li class="address-detail">{{ elements.contact_info.address }}</li>
+                        <li class="telephone">Tel:  {{ elements.contact_info.telephone }}</li>
+                        <li class="fax">Fax: {{ elements.contact_info.fax }}</li>
+                        <li class="email">Email: {{ elements.contact_info.email }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 visible-xs text-center">
+                <div class="footer-address">
+                    <ul>
+                        <li class="title">Central Office Address:</li>
+                        <li class="address-detail">{{ elements.contact_info.address }}</li>
+                        <li class="telephone">Tel:  {{ elements.contact_info.telephone }}</li>
+                        <li class="fax">Fax: {{ elements.contact_info.fax }}</li>
+                        <li class="email">Email: {{ elements.contact_info.email }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3 hidden-xs">
+                <div class="footer-agents">
+                    <ul>
+                        <li class="title">Exclusive Agent</li>
+                        <li class="agent"><a href="https://www.jamesway.com/" target="_blank">JAMESWAY Co.</a></li>
+                        <li class="agent"><a href="http://www.kutlusan.com.tr/" target="_blank">KUTLUSAN Co.</a></li>
+                        <li class="agent"><a href="http://www.yemmak.com/" target="_blank">YEMMAK Co.</a></li>
+                        <li class="agent"><a href="http://www.zorelmachine.com/" target="_blank">ZOREL Co.</a></li>
+                        <li class="agent"><a href="https://www.munters.com/" target="_blank">MUNTERS Co.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3 hidden-xs">
+                <div class="footer-services">
+                    <ul>
+                        <li class="title">Our Services</li>
+                        <li class="service"><a href="">Customs service</a></li>
+                        <li class="service"><a href="">Customers Care</a></li>
+                        <li class="service"><a href="">Building</a></li>
+                        <li class="service"><a href="">Poultry & Farming</a></li>
+                        <li class="service"><a href="">Import & Export</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="copyright">
+    <div class="container">
+        <div class="row">
+            <p>Copy Right © 2017 Novin Niroo Co., All Rights Reserved <a href="http://www.artwayco.com/" style="text-decoration: none; color: gray" target="_blank">Artway Co.</a></p>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    function initMap() {
+        var uluru4 = {lat: {{elements.contact_info.lat}} , lng: {{elements.contact_info.lang}}};
+        var map4 = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: uluru4
+        });
+        var marker = new google.maps.Marker({
+            position: uluru4,
+            map: map4
+        });
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4A8JoqZ27Y8JMWuhATa9uciit8eYFTPg&callback=initMap">
+</script>
+

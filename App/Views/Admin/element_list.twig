@@ -1,0 +1,233 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Elements List{% endblock %}
+
+
+{% block body %}
+<!--Content Editor-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">مدیریت المان ها</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" id="myTab">
+                    <li role="presentation" class="active"><a href="#middel_section" aria-controls="middel_section" role="tab" data-toggle="tab">بخش میانی</a></li>
+                    <li role="presentation"><a href="#socials" aria-controls="socials" role="tab" data-toggle="tab">شبکه های اجتماعی</a></li>
+                </ul>
+
+
+            </div>
+            <div class="panel-body">
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="middel_section">
+                        <br>
+                        <form action="/admin/element/update" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="entity_key" value="middel_section">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">عنوان انگلیسی: </label>
+                                <div class="col-sm-6">
+                                    <input dir="ltr" type="text" class="form-control" name="title" value="{{elements.middel_section.title}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">عنوان فارسی: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="fa_title" value="{{elements.middel_section.fa_title}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">لینک: </label>
+                                <div class="col-sm-6">
+                                    <input dir="ltr" type="text" class="form-control" name="link" value="{{elements.middel_section.link}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">توضیحات انگلیسی: </label>
+                                <div class="col-sm-6">
+                                    <textarea dir="ltr" name="description" id="" class="form-control" rows="10">{{elements.middel_section.description}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">توضیحات فارسی: </label>
+                                <div class="col-sm-6">
+                                    <textarea name="fa_description" id="" class="form-control" rows="10">{{elements.middel_section.fa_description}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">تگ انگلیسی تصویر: </label>
+                                <div class="col-sm-6">
+                                    <input dir="ltr" type="text" class="form-control" name="alt" value="{{elements.middel_section.alt}}" placeholder="تگ تصویر را به زبان انگیلیسی وارد کنید">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">تگ فارسی تصویر: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="alt_fa" value="{{elements.middel_section.alt_fa}}" placeholder="تگ تصویر را به زبان فارسی وارد کنید">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">تصویر: </label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control" name="image" value="{{elements.middel_section.link}}">
+                                </div>
+                            </div>
+
+                            <div class="ln-solid"></div>
+                            <div class="form-group">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-success">بارگذاری</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="image-gallery">
+                            <div class="col-sm-5 col-sm-offset-2">
+                                <div class="image">
+                                    <img src="{{url('uploads')}}/{{elements.middel_section.image}}" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="socials">
+                        <br>
+                        <form action="/admin/element/update" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="entity_key" value="socials_info">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">لینکدین: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="linkedin" value="{{elements.socials_info.linkedin}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">گوگل پلاس: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="google" value="{{elements.socials_info.google}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">توییتر: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="twitter" value="{{elements.socials_info.twitter}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">فیسبوک: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="facebook" value="{{elements.socials_info.facebook}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">اینستاگرام: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="instagram" value="{{elements.socials_info.instagram}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">واتساپ: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="whatsapp" value="{{elements.socials_info.whatsapp}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">آپارات: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="aparat" value="{{elements.socials_info.aparat}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">تلگرام: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="telegram" value="{{elements.socials_info.telegram}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">یوتیوب: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="youtube" value="{{elements.socials_info.youtube}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-success">بارگذاری</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        $(document).ready(function () {
+            $('.about-desc').summernote({
+
+                toolbar: [
+                    ['style', ['style']],
+                    ['fontsize', ['fontsize']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['picture', 'hr']],
+                    ['table', ['table']]
+                ],
+
+                height: 200,
+                fontNames: ['myraidpro', 'persian-sols', 'irsans', 'Arial', 'Courier New'],
+                fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48', '64', '82', '150']
+            });
+        });
+    </script>
+
+
+
+
+    <script>
+
+        $(function(){
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+    </script>
+
+    <script>
+//            $(document).ready(function(){
+//                $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+//                    localStorage.setItem('activeTab', $(e.target).attr('href'));
+//                });
+//                var activeTab = localStorage.getItem('activeTab');
+//                if(activeTab){
+//                    $('#myTab a[href="' + activeTab + '"]').tab('show');
+//                }
+//            });
+    </script>
+
+
+{% endblock %}
+
+

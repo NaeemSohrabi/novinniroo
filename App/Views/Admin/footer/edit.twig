@@ -1,0 +1,415 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Footer Settings{% endblock %}
+
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">مدیریت بخش فوتر</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {#<div class="tab">#}
+                        {#<button class="tablinks active" onclick="openLanguage(event, 'agents')">نمایندگان</button>#}
+                        {#<button class="tablinks" onclick="openLanguage(event, 'services')"> سرویس ها</button>#}
+
+                    {#</div>#}
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist" id="myTab">
+                        <li role="presentation" class="active"><a href="#agents" aria-controls="agents" role="tab" data-toggle="tab">نمایندگان</a></li>
+                        <li role="presentation"><a href="#services" aria-controls="services" role="tab" data-toggle="tab">سرویس ها</a></li>
+                        <li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">آدرس</a></li>
+                        <li role="presentation"><a href="#map_attr" aria-controls="map_attr" role="tab" data-toggle="tab">نقشه</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active"  id="agents" >
+                            <br>
+                            <form action="/admin/footer/agentsupdate" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" class="form-control" name="entity_key" value="agents">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان اصلی: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="main_en" placeholder="انگلیسی" dir="ltr"  value="{{elements.agents.main_en}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="main_fa" placeholder="فارسی" value="{{elements.agents.main_fa}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_1" placeholder="انگلیسی" dir="ltr"  value="{{elements.agents.name_en_1}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_1" placeholder="فارسی" value="{{elements.agents.name_fa_1}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_1" placeholder="لینک" dir="ltr" value="{{elements.agents.link_1}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_2" placeholder="انگلیسی" dir="ltr"  value="{{elements.agents.name_en_2}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_2" placeholder="فارسی" value="{{elements.agents.name_fa_2}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_2" placeholder="لینک" dir="ltr" value="{{elements.agents.link_2}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_3" placeholder="انگلیسی" dir="ltr"  value="{{elements.agents.name_en_3}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_3" placeholder="فارسی" value="{{elements.agents.name_fa_3}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_3" placeholder="لینک" dir="ltr" value="{{elements.agents.link_3}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_4" placeholder="انگلیسی" dir="ltr"  value="{{elements.agents.name_en_4}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_4" placeholder="فارسی" value="{{elements.agents.name_fa_4}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_4" placeholder="لینک" dir="ltr" value="{{elements.agents.link_4}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_5" placeholder="انگلیسی" dir="ltr"  value="{{elements.agents.name_en_5}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_5" placeholder="فارسی" value="{{elements.agents.name_fa_5}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_5" placeholder="لینک" dir="ltr" value="{{elements.agents.link_5}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_6" placeholder="انگلیسی" dir="ltr"  value="{{elements.agents.name_en_6}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_6" placeholder="فارسی" value="{{elements.agents.name_fa_6}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_6" placeholder="لینک" dir="ltr" value="{{elements.agents.link_6}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_7" placeholder="انگلیسی" dir="ltr"  value="{{elements.agents.name_en_7}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_7" placeholder="فارسی" value="{{elements.agents.name_fa_7}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_7" placeholder="لینک" dir="ltr" value="{{elements.agents.link_7}}">
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-sm-offset-2">
+                                        <button type="submit" class="btn btn-primary">بارگذاری</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="services">
+                            <br>
+                            <form action="/admin/footer/servicesupdate" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" class="form-control" name="entity_key" value="services">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان اصلی: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="main_en" placeholder="انگلیسی" dir="ltr"  value="{{elements.services.main_en}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="main_fa" placeholder="فارسی" value="{{elements.services.main_fa}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_1" placeholder="انگلیسی" dir="ltr"  value="{{elements.services.name_en_1}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_1" placeholder="فارسی" value="{{elements.services.name_fa_1}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_1" placeholder="لینک" dir="ltr" value="{{elements.services.link_1}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_2" placeholder="انگلیسی" dir="ltr"  value="{{elements.services.name_en_2}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_2" placeholder="فارسی" value="{{elements.services.name_fa_2}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_2" placeholder="لینک" dir="ltr" value="{{elements.services.link_2}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_3" placeholder="انگلیسی" dir="ltr"  value="{{elements.services.name_en_3}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_3" placeholder="فارسی" value="{{elements.services.name_fa_3}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_3" placeholder="لینک" dir="ltr" value="{{elements.services.link_3}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_4" placeholder="انگلیسی" dir="ltr"  value="{{elements.services.name_en_4}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_4" placeholder="فارسی" value="{{elements.services.name_fa_4}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_4" placeholder="لینک" dir="ltr" value="{{elements.services.link_4}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_5" placeholder="انگلیسی" dir="ltr"  value="{{elements.services.name_en_5}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_5" placeholder="فارسی" value="{{elements.services.name_fa_5}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_5" placeholder="لینک" dir="ltr" value="{{elements.services.link_5}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_6" placeholder="انگلیسی" dir="ltr"  value="{{elements.services.name_en_6}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_6" placeholder="فارسی" value="{{elements.services.name_fa_6}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_6" placeholder="لینک" dir="ltr" value="{{elements.services.link_6}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">عنوان / لینک: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_en_7" placeholder="انگلیسی" dir="ltr"  value="{{elements.services.name_en_7}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="name_fa_7" placeholder="فارسی" value="{{elements.services.name_fa_7}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="link_7" placeholder="لینک" dir="ltr" value="{{elements.services.link_7}}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-sm-offset-2">
+                                        <button type="submit" class="btn btn-primary">بارگذاری</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="map_attr">
+                            <br>
+                            <form action="/admin/footer/agentsupdate" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" class="form-control" name="entity_key" value="map_attr">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">lat: </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="lat" placeholder="مختصات نقشه" dir="ltr"  value="{{elements.map_attr.lat}}">
+                                    </div>
+                                    <label class="col-sm-2 control-label">lng: </label>
+                                    <div class="col-sm-3">
+                                        <input dir="ltr" type="text" class="form-control" name="lng" placeholder="مختصات نقشه" value="{{elements.map_attr.lng}}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-sm-offset-2">
+                                        <button type="submit" class="btn btn-primary">بارگذاری</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="address">
+                            <br>
+                            <form action="/admin/footer/agentsupdate" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" class="form-control" name="entity_key" value="address">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">نام انگلیسی دفتر: </label>
+                                    <div class="col-sm-6">
+                                        <input dir="ltr" type="text" class="form-control" name="en_name" value="{{elements.address.en_name}}" placeholder="نام انگلیسی">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">نام فارسی دفتر: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="fa_name" value="{{elements.address.fa_name}}" placeholder="نام فارسی">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">شماره تلفن: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" dir="ltr" name="phone" value="{{elements.address.phone}}" placeholder="تلفن">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">شماره فکس: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" dir="ltr" name="fax" value="{{elements.address.fax}}" placeholder="فکس">
+                                    </div>
+                                </div>
+                                {#<div class="form-group">#}
+                                    {#<label class="col-sm-2 control-label">شماره موبایل: </label>#}
+                                    {#<div class="col-sm-6">#}
+                                        {#<input type="text" class="form-control" name="mobile" value="{{elements.address.mobile}}" placeholder="موبایل">#}
+                                    {#</div>#}
+                                {#</div>#}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">ایمیل: </label>
+                                    <div class="col-sm-6">
+                                        <input dir="ltr" type="text" class="form-control" name="email" value="{{elements.address.email}}" placeholder="ایمیل">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">وب سایت: </label>
+                                    <div class="col-sm-6">
+                                        <input dir="ltr" type="text" class="form-control" name="web" value="{{elements.address.web}}" placeholder="ایمیل">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">آدرس انگلیسی: </label>
+                                    <div class="col-sm-6">
+                                        <textarea dir="ltr" name="en_address" id="" class="form-control" rows="10" placeholder="آدرس به انگلیسی">{{elements.address.en_address}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">آدرس فارسی: </label>
+                                    <div class="col-sm-6">
+                                        <textarea name="fa_address" id="" class="form-control" rows="10" placeholder="آدرس به فارسی">{{elements.address.fa_address}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3 col-sm-offset-2">
+                                        <button type="submit" class="btn btn-success">بارگذاری</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block script %}
+
+    {#<script>#}
+        {#function openLanguage(evt, language) {#}
+            {#var i, tabcontent, tablinks;#}
+            {#tabcontent = document.getElementsByClassName("tabcontent");#}
+            {#for (i = 0; i < tabcontent.length; i++) {#}
+                {#tabcontent[i].style.display = "none";#}
+            {#}#}
+            {#tablinks = document.getElementsByClassName("tablinks");#}
+            {#for (i = 0; i < tablinks.length; i++) {#}
+                {#tablinks[i].className = tablinks[i].className.replace(" active", "");#}
+            {#}#}
+            {#document.getElementById(language).style.display = "block";#}
+            {#evt.currentTarget.className += " active";#}
+        {#}#}
+    {#</script>#}
+
+    <script>
+
+        $(function(){
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+
+    </script>
+
+    <script>
+        $(function(){
+            var url = window.location.href;
+            var activeTab = url.substring(url.indexOf("#") + 1);
+//            $(".tab-pane").removeClass("active in");
+            $("#" + activeTab).addClass("active in");
+            $('a[href="#'+ activeTab +'"]').tab('show')
+        });
+    </script>
+
+{% endblock %}

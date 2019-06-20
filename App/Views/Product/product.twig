@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% block title %}Product{% endblock %}
+
+
+
+{% block body %}
+    {{ include('_templates/header.html') }}
+
+
+    <section class="brand-slide-show">
+        <div class="container">
+            <div class="row">
+                <div class="slider single-item">
+                    <div>
+                        <div class="slide-text text-center">
+                            <div class="slide-title">High efficient performance marvel !</div>
+                            {#<div class="slide-link"><a href="#">INDUSTRIAL PROCESS SOLUTIONS </a><i#}
+                            {#class="fa fa-angle-double-right"></i></div>#}
+                        </div>
+                        <div class="slid-image">
+                            <img src="../images/slide.jpg" alt="">
+                        </div>
+                    </div>
+                    {#<div>#}
+                        {#<div class="slid-image col-sm-8">#}
+                            {#<img src="../images/slide.jpg" alt="">#}
+                        {#</div>#}
+                        {#<div class="slide-text col-sm-4">#}
+                            {#<div class="slide-title">Lorem ipsum dolor sit amet, consectetuer</div>#}
+                            {#<div class="slide-link"><a href="#">Lorem ipsum dolor sit </a><i#}
+                                        {#class="fa fa-angle-double-right"></i></div>#}
+                        {#</div>#}
+                    {#</div>#}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<section class="product-info">
+    <div class="container">
+        <div class="product-text">
+            <div class="product-title"></div>
+            <div class="product-description"></div>
+        </div>
+    </div>
+
+
+</section>
+
+
+    {{ include('_templates/footer.html') }}
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        $('.single-item').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            arrows: false,
+            fade: true,
+        });
+    </script>
+
+{% endblock %}

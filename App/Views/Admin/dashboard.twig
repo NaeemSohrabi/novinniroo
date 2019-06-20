@@ -1,0 +1,76 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+
+{% block body %}
+<!--Content Editor-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">داشبورد</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-6 pull-right">
+                    <div class="dash-card">
+                        <i class="fa fa-first-order"></i>
+                        <div class="count">{{ countitems[0][2] }} برند</div>
+                        <a href="{{ url('admin/brand/list') }}">لیست برند ها</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 pull-right">
+                    <div class="dash-card">
+                        <i class="fa fa-product-hunt"></i>
+                        <div class="count">{{ countitems[0][3] }} محصول</div>
+                        <a href="{{ url('admin/product/list') }}">لیست محصولات</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 pull-right">
+                    <div class="dash-card">
+                        <i class="fa fa-file-text-o"></i>
+                        <div class="count">{{ countitems[0][1] }} صفحه</div>
+                        <a href="{{ url('admin/page/list') }}">لیست صفحات</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 pull-right">
+                    <div class="dash-card">
+                        <i class="fa fa-newspaper-o"></i>
+                        <div class="count">{{ countitems[0][0] }} خبر</div>
+                        <a href="{{ url('admin/news/list') }}">لیست اخبار</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('.description').summernote({
+            height: 200
+        });
+    });
+
+</script>
+
+<script>
+    function openLanguage(evt, language) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(language).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+
+{% endblock %}

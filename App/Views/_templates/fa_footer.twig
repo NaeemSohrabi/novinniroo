@@ -1,0 +1,117 @@
+<section class="footer">
+    <div class="container">
+        <div class="footer-logo hidden-xs">
+            <img src="/images/Logo-Header.png" alt="" class="img-responsive">
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 visible-lg">
+                <div id="map" style="height: 200px; width: 100%"></div>
+                <div class="footer-social">
+                    <ul>
+                        {% if elements.socials_info.facebook is not empty %}
+                            <li><a href="{{ elements.socials_info.facebook }}"><i class="icon icon-faceboook"></i></a>
+                            </li> {% endif %}
+                        {% if elements.socials_info.twitter is not empty %}
+                            <li><a href="{{ elements.socials_info.twitter }}"><i class="icon icon-twitter"></i></a>
+                            </li> {% endif %}
+                        {% if elements.socials_info.google is not empty %}
+                            <li><a href="{{ elements.socials_info.google }}"><i class="icon icon-google_plus"></i></a>
+                            </li> {% endif %}
+                        {% if elements.socials_info.linkedin is not empty %}
+                            <li><a href="{{ elements.socials_info.linkedin }}"><i class="icon icon-linkedin"></i></a>
+                            </li> {% endif %}
+                        {% if elements.socials_info.whatsapp is not empty %}
+                            <li><a href="{{ elements.socials_info.whatsapp }}"><i class="icon icon-whatsapp"></i></a>
+                            </li> {% endif %}
+                        {% if elements.socials_info.telegram is not empty %}
+                            <li><a href="{{ elements.socials_info.telegram }}"><i class="icon icon-telegram"></i></a>
+                            </li> {% endif %}
+                        {% if elements.socials_info.aparat is not empty %}
+                            <li><a href="{{ elements.socials_info.aparat }}"><i class="icon icon-aparat"></i></a>
+                            </li> {% endif %}
+                        {% if elements.socials_info.instagram is not empty %}
+                            <li><a href="{{ elements.socials_info.instagram }}"><i class="icon icon-instagram"></i></a>
+                            </li> {% endif %}
+                        {% if elements.socials_info.youtube is not empty %}
+                            <li><a href="{{ elements.socials_info.youtube }}"><i class="icon icon-youtube"></i></a>
+                            </li> {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-5 hidden-xs">
+                <div class="footer-address">
+                    <ul>
+                        <li class="title">آدرس دفتر {{ elements.address.fa_name }}</li>
+                        <li class="address-detail">{{ elements.address.fa_address }}</li>
+                        <li class="telephone">تلفن :  {{ elements.address.phone [10:] }} {{ elements.address.phone [7:3] }} {{ elements.address.phone [4:3] }} {{ elements.address.phone [2:2] }} {{ elements.address.phone [:2] }}+</li>
+                        <li class="fax">فکس : {{ elements.address.fax [10:] }} {{ elements.address.fax [7:3] }} {{ elements.address.fax [4:3] }} {{ elements.address.fax [2:2] }} {{ elements.address.fax [:2] }}+</li>
+                        <li class="email">ایمیل : {{ elements.address.email }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 visible-xs text-center">
+                <div class="footer-address">
+                    <ul>
+                        <li class="title">آدرس دفتر {{ elements.address.fa_name }}</li>
+                        <li class="address-detail">{{ elements.address.fa_address }}</li>
+                        <li class="telephone">تلفن :  {{ elements.address.phone [10:] }} {{ elements.address.phone [7:3] }} {{ elements.address.phone [4:3] }} {{ elements.address.phone [2:2] }} {{ elements.address.phone [:2] }}+</li>
+                        <li class="fax">فکس : {{ elements.address.fax [10:] }} {{ elements.address.fax [7:3] }} {{ elements.address.fax [4:3] }} {{ elements.address.fax [2:2] }} {{ elements.address.fax [:2] }}+</li>
+                        <li class="email">ایمیل : {{ elements.address.email }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 hidden-xs">
+                <div class="footer-agents">
+                    <ul>
+                        {% if elements.agents.main_en is not empty %}  <li class="title">{{elements.agents.main_fa}}</li> {% endif %}
+                        {% if elements.agents.name_en_1 is not empty %} <li class="agent"><a href="{{elements.agents.link_1}}" target="_blank">{{elements.agents.name_fa_1}}</a></li>{% endif %}
+                        {% if elements.agents.name_en_2 is not empty %} <li class="agent"><a href="{{elements.agents.link_2}}" target="_blank">{{elements.agents.name_fa_2}}</a></li>{% endif %}
+                        {% if elements.agents.name_en_3 is not empty %} <li class="agent"><a href="{{elements.agents.link_3}}" target="_blank">{{elements.agents.name_fa_3}}</a></li>{% endif %}
+                        {% if elements.agents.name_en_4 is not empty %} <li class="agent"><a href="{{elements.agents.link_4}}" target="_blank">{{elements.agents.name_fa_4}}</a></li>{% endif %}
+                        {% if elements.agents.name_en_5 is not empty %} <li class="agent"><a href="{{elements.agents.link_5}}" target="_blank">{{elements.agents.name_fa_5}}</a></li>{% endif %}
+                        {% if elements.agents.name_en_6 is not empty %} <li class="agent"><a href="{{elements.agents.link_6}}" target="_blank">{{elements.agents.name_fa_6}}</a></li>{% endif %}
+                        {% if elements.agents.name_en_7 is not empty %} <li class="agent"><a href="{{elements.agents.link_7}}" target="_blank">{{elements.agents.name_fa_6}}</a></li>{% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 hidden-xs">
+                <div class="footer-services">
+                    <ul>
+                        {% if elements.services.main_en is not empty %}  <li class="title">{{elements.services.main_fa}}</li> {% endif %}
+                        {% if elements.services.name_en_1 is not empty %} <li class="service"><a href="">{{elements.services.name_fa_1}}</a></li> {% endif %}
+                        {% if elements.services.name_en_2 is not empty %} <li class="service"><a href="">{{elements.services.name_fa_2}}</a></li> {% endif %}
+                        {% if elements.services.name_en_3 is not empty %} <li class="service"><a href="">{{elements.services.name_fa_3}}</a></li> {% endif %}
+                        {% if elements.services.name_en_4 is not empty %} <li class="service"><a href="">{{elements.services.name_fa_4}}</a></li> {% endif %}
+                        {% if elements.services.name_en_5 is not empty %} <li class="service"><a href="">{{elements.services.name_fa_5}}</a></li> {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="copyright">
+    <div class="container">
+        {#<div class="row">#}
+            <p>.Copy Right © 2017 Novin Niroo Co., All Rights Reserved <a href="http://www.artwayco.com/" style="text-decoration: none; color: gray" target="_blank">Artway Co</a></p>
+        {#</div>#}
+    </div>
+</section>
+
+
+{#<script>#}
+    {#function initMap() {#}
+        {#var uluru4 = {lat: {{ elements.map.lat }} , lng: {{ elements.map.lng }}};#}
+        {#var map4 = new google.maps.Map(document.getElementById('mappp'), {#}
+            {#zoom: 14,#}
+            {#center: uluru4#}
+        {#});#}
+        {#var marker = new google.maps.Marker({#}
+            {#position: uluru4,#}
+            {#map: map4#}
+        {#});#}
+    {#}#}
+{#</script>#}
+
+
+

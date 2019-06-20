@@ -1,0 +1,262 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Home Slideshow{% endblock %}
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <h1 class="page-header">ویرایش اسلایدشو</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <a href="{{ url('admin/home/slideshow/list') }}" class="btn btn-info">لیست اسلایدشوها</a>
+                </div>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" id="myTab">
+                    <li role="presentation" class="active"><a href="#en_data" aria-controls="en_data" role="tab"
+                                                              data-toggle="tab">ویرایش اطلاعات انگلیسی</a></li>
+                    <li role="presentation"><a href="#fa_data" aria-controls="fa_data" role="tab" data-toggle="tab">ویرایش
+                            اطلاعات فارسی</a></li>
+                    <li role="presentation"><a href="#tag_edit" aria-controls="tag_edit" role="tab" data-toggle="tab">ویرایش
+                            تگ تصویر</a></li>
+                </ul>
+
+
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div role="tabpanel" id="en_data" class="tab-pane active">
+                        <form action="/admin/home/slideshow/update" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="id" value="{{ media.id }}">
+                            <input type="hidden" class="form-control" name="entity_type" value="home">
+                            <input type="hidden" class="form-control" name="entity_id" value="0">
+                            <input type="hidden" class="form-control" name="entity_position" value="slideshow">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">عنوان تصویر اسلایدشو: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="title" value="{{ media.title }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">توضیح تصویر اسلایدشو: </label>
+                                <div class="col-sm-6">
+                                <textarea name="description" class=" form-control"
+                                          rows="10">{{ media.description }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">لینک: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="manual" class="form-control" name="link"
+                                           value="{{ media.link }}" style="text-align: left; direction: ltr">
+                                    <select name="link" id="product-list" class="form-control" disabled
+                                            style="display: none">
+                                        <option value="">انتخاب محصول ...</option>
+                                        {% for value in products %}
+                                            <option value="{{ url('product') }}/{{ value.id }}/review">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select name="link" id="brand-list" class="form-control" disabled
+                                            style="display: none">
+                                        <option value="">انتخاب برند ...</option>
+                                        {% for value in brands %}
+                                            <option value="{{ url('brand') }}/{{ value.id }}/review">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select name="link" id="page-list" class="form-control" disabled
+                                            style="display: none">
+                                        <option value="">انتخاب صفحه ...</option>
+                                        {% for value in pages %}
+                                            <option value="{{ url('page') }}/review/{{ value.slug }}">{{ value.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="manual-link">انتخاب دستی </label><input type="radio" id="manual-link"
+                                                                                        name="list">
+                                    <label for="product-link">انتخاب محصول </label><input type="radio" id="product-link"
+                                                                                          name="list">
+                                    <label for="brand-link">انتخاب برند </label><input type="radio" id="brand-link"
+                                                                                       name="list">
+                                    <label for="page-link">انتخاب صفحه </label><input type="radio" id="page-link"
+                                                                                      name="list">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">انتخاب تصویراسلایدشو: </label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control" name="media">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-primary"> بارگذاری عکس</button>
+                                </div>
+                            </div>
+
+
+                            <div class="image-gallery">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <div class="image">
+                                        <img src="{{ url('uploads') }}/{{ media.file }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="form-group">
+                                <label for="sel1" class="col-sm-2 control-label">وضعیت نمایش:</label>
+                                <select class="form-control col-sm-6" name="status">
+                                    <option value="{{ media.status }}">{{ media.status }}</option>
+                                    <option value="نمایش">نمایش</option>
+                                    <option value="عدم نمایش">عدم نمایش</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">اولویت نمایش: </label>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" name="priority" value="{{ media.priority }}">
+                                </div>
+                            </div>
+                    </div>
+                    <div role="tabpanel" id="fa_data" class="tab-pane fade">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">عنوان تصویر اسلایدشو: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="fa_title" value="{{ media.fa_title }}">
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group" style="display: -webkit-box">
+                            <label class="col-sm-2 control-label">توضیح تصویر اسلایدشو: </label>
+                            <div class="col-sm-6">
+                            <textarea name="fa_description" class=" form-control"
+                                      rows="10">{{ media.fa_description }}</textarea>
+                            </div>
+                        </div>
+                        {#<br>#}
+                        {#<br>#}
+                        <div class="image-gallery">
+                            <div class="col-sm-3 col-sm-offset-2">
+                                <div class="image">
+                                    <img src="{{ url('uploads') }}/{{ media.file }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ln-solid clearfix"></div>
+
+                        <button type="submit" class="btn btn-primary">بارگذاری</button>
+                        <button class="btn btn-danger" type="submit" onclick="history.go(-1);">انصراف</button>
+                        </form>
+                    </div>
+                    <div role="tabpanel" id="tag_edit" class="tab-pane fade">
+                        <div class="image-gallery">
+                            <div class="col-sm-6 col-sm-offset-2">
+                                <div class="image">
+                                    <img src="{{ url('uploads') }}/{{ media.file }}" alt="">
+                                    <div class="info">
+                                        {#<div class="ln-solid"></div>#}
+                                        <form action="/ajax/media/alt" method="post" class="media-form">
+                                            <input type="hidden" name="id" value="{{ media.id }}">
+                                            <input type="text" name="alt" placeholder="insert alt attribute"
+                                                   class="form-control" value="{{ media.alt }}">
+                                            <div class="ln-solid"></div>
+                                            <input type="text" name="alt_fa" placeholder="تگ را وارد کنید"
+                                                   class="form-control" value="{{ media.alt_fa }}">
+                                            <br>
+                                            <input type="submit" id="submit"
+                                                   class="btn btn-success btn-block" value="ذخیره">
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {#<div class="ln-solid clearfix"></div>#}
+
+                        {#<button type="submit" class="btn btn-primary">بارگذاری</button>#}
+                        {#<button class="btn btn-danger" type="submit" onclick="history.go(-1);">انصراف</button>#}
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        $(document).ready(function () {
+
+            $('#page-link').click(function () {
+                if ($('#page-link').is(':checked')) {
+                    $('#brand-list, #manual, #product-list').attr('disabled', true).hide();
+                    $('#page-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#product-link').click(function () {
+                if ($('#product-link').is(':checked')) {
+                    $('#brand-list, #manual, #page-list').attr('disabled', true).hide();
+                    $('#product-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#brand-link').click(function () {
+                if ($('#brand-link').is(':checked')) {
+                    $('#product-list, #manual, #page-list').attr('disabled', true).hide();
+                    $('#brand-list').attr('disabled', false).show();
+                }
+            });
+
+            $('#manual-link').click(function () {
+                if ($('#manual-link').is(':checked')) {
+                    $('#brand-list, #product-list, #page-list').attr('disabled', true).hide();
+                    $('#manual').attr('disabled', false).show();
+                }
+            });
+        });
+
+    </script>
+
+    {#<script>#}
+    {#function openLanguage(evt, language) {#}
+    {#var i, tabcontent, tablinks;#}
+    {#tabcontent = document.getElementsByClassName("tabcontent");#}
+    {#for (i = 0; i < tabcontent.length; i++) {#}
+    {#tabcontent[i].style.display = "none";#}
+    {#}#}
+    {#tablinks = document.getElementsByClassName("tablinks");#}
+    {#for (i = 0; i < tablinks.length; i++) {#}
+    {#tablinks[i].className = tablinks[i].className.replace(" active", "");#}
+    {#}#}
+    {#document.getElementById(language).style.display = "block";#}
+    {#evt.currentTarget.className += " active";#}
+    {#}#}
+    {#</script>#}
+
+    <script>
+
+        $(function () {
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+body {
+
+  h3{
+    margin: 0;
+  }
+}
+
+.btn-download{
+
+}
+
+.hover-hide {
+  display: block;
+  transition: opacity 1s ease-out;
+  opacity: 1;
+}
+
+.hover-show {
+  display: block;
+  transition: opacity 1s ease-in;
+  opacity: 0;
+}
+
+.hover-show:hover{
+  display: block;
+  opacity: 1;
+}
+
+.hover-hide:hover {
+  display: none;
+  opacity: 0;
+}
+
+.alert{
+  padding: 10px; color: #fff;
+  &.success{
+background: green;
+  }
+  &.error{
+    background: red;
+  }
+}
+
+.card-panel{
+  position: relative;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  //background-color: white;
+  z-index: 0;
+}
+
+

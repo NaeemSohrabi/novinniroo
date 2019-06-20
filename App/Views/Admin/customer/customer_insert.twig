@@ -1,0 +1,171 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}Customer Insert{% endblock %}
+
+
+{% block body %}
+<!--Content Editor-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">افزودن مشتری</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" id="myTab">
+                    <li role="presentation" class="active"><a href="#customer_insert" aria-controls="customer_insert" role="tab" data-toggle="tab">افزودن مشتری</a></li>
+                    <li role="presentation"><a href="#customer_text" aria-controls="customer_text" role="tab" data-toggle="tab">متن مشتریان / صفحه اول</a></li>
+                </ul>
+
+            </div>
+            <div class="panel-body">
+
+                <div class="tab-content">
+
+                    <div role="tabpanel" id="customer_insert" class="tab-pane active">
+                        <form action="/admin/customer/store" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="id" value="">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">نام مشتری: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="title" placeholder="نام"
+                                           value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">انتخاب لوگو مشتری: </label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control" name="logo">
+                                </div>
+
+                            </div>
+                            {#<div class="ln-solid"></div>#}
+                            <br>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <button class="btn btn-primary" type="submit">بارگذاری</button>
+                                    <!--<button class="btn btn-danger" type="submit">انصراف</button>-->
+                                </div>
+                            </div>
+                        </form>
+                        <div class="ln-solid"></div>
+                        <div class="panel panel-default text-center" >
+                            <div class="panel-heading " style="background-color: #94C9EE;">لیست مشتریان</div>
+                        </div>
+
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>عنوان</th>
+                                <th>لوگو</th>
+                                <th><i class="fa fa-cog"></i> تنظیمات</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if customers|length > 0 %}
+                                {% for customer in customers %}
+                                    <tr>
+                                        <td>{{ customer.id }}</td>
+                                        <td>{{ customer.title }}</td>
+                                        <td><img src="{{ url('uploads') }}/{{ customer.logo }}" alt="" width="100"></td>
+                                        <td>
+                                            <a href="{{ url('admin/customer/edit') }}/{{ customer.id }}" class="btn btn-primary">ویرایش</a>
+                                            <a href="{{ url('admin/customer/delete') }}/{{ customer.id }}" class="btn btn-danger" data-toggle="confirmation">حذف</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">!oops not found</td>
+                                </tr>
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div role="tabpanel" id="customer_text" class="tab-pane fade active">
+                        <form action="/admin/element/update" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="entity_key" value="customer_text">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">عنوان انگلیسی: </label>
+                                <div class="col-sm-6">
+                                    <input dir="ltr" type="text" class="form-control" name="title" value="{{elements.customer_text.title}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">توضیحات انگلیسی: </label>
+                                <div class="col-sm-6">
+                                    <textarea dir="ltr" name="description" id="" class="form-control" rows="10">{{elements.customer_text.description}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">عنوان فارسی: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="fa_title" value="{{elements.customer_text.fa_title}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">توضیحات فارسی: </label>
+                                <div class="col-sm-6">
+                                    <textarea name="fa_description" id="" class="form-control" rows="10">{{elements.customer_text.fa_description}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-success">بارگذاری</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+
+{#<script>#}
+    {#function openLanguage(evt, language) {#}
+        {#var i, tabcontent, tablinks;#}
+        {#tabcontent = document.getElementsByClassName("tabcontent");#}
+        {#for (i = 0; i < tabcontent.length; i++) {#}
+            {#tabcontent[i].style.display = "none";#}
+        {#}#}
+        {#tablinks = document.getElementsByClassName("tablinks");#}
+        {#for (i = 0; i < tablinks.length; i++) {#}
+            {#tablinks[i].className = tablinks[i].className.replace(" active", "");#}
+        {#}#}
+        {#document.getElementById(language).style.display = "block";#}
+        {#evt.currentTarget.className += " active";#}
+    {#}#}
+{#</script>#}
+
+    <script>
+
+        $(function(){
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+    </script>
+
+{% endblock %}

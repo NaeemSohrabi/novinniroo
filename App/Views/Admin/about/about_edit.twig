@@ -1,0 +1,173 @@
+{% extends "Admin/base.twig" %}
+
+{% block title %}About Settings{% endblock %}
+
+
+
+{% block body %}
+    <!--Content Editor-->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">مدیریت درباره ما</h1>
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <div class="tab">
+                        <button class="tablinks  active" onclick="openLanguage(event, 'about')">متن توضیحات</button>
+                        <button class="tablinks" onclick="openLanguage(event, 'gallery')">گالری تصاویر</button>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+
+                    <div id="about" class="tabcontent active" style="display: block;">
+                        <form action="/admin/about/element/update" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="entity_key" value="about_info">
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>متن انگلیسی درباره ما</h4>
+
+                                <div class="form-group">
+                                <textarea class="about-desc description" name="about_desc"
+                                          placeholder="Description...">{{ elements.about_info.about_desc }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <h4>متن فارسی درباره ما</h4>
+
+                                <div class="form-group">
+                                <textarea class="about-desc description" name="fa_about_desc"
+                                          placeholder="Description...">{{ elements.about_info.fa_about_desc }}</textarea>
+                                </div>
+                            </div>
+                            <div class="ln-solid"></div>
+                            <div class="form-group">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-success">بارگذاری</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div id="gallery" class="tabcontent">
+
+                        <form action="/admin/about/media/store" class="form-horizontal" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" class="form-control" name="entity_type" value="about">
+                            <input type="hidden" class="form-control" name="entity_id" value="">
+                            <input type="hidden" class="form-control" name="entity_position" value="gallery">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">افزودن تصاویر اسلایدشو: </label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control" name="media">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-success">بارگذاری تصاویر</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="ln-solid clearfix"></div>
+
+                        <div class="image-gallery">
+                            {% if medias|length > 0 %}
+                                {% for media in medias %}
+                                    <div class="col-sm-4 image-wrapper">
+                                        <div class="image">
+                                            <img src="{{url('uploads')}}/{{media.file}}" alt="">
+                                            <div class="info">
+                                                <form action="/ajax/media/delete" method="post" class="media-form" style="margin-bottom: 10px; margin-top: -10px">
+                                                    <input type="hidden" name="id" value="{{ media.id }}">
+                                                    <input type="submit" class="btn btn-danger btn-block"
+                                                           data-toggle="confirmation" data-placement="bottom"
+                                                           value="حذف تصویر">
+                                                </form>
+                                                {#<br>#}
+                                                {#<div class="ln-solid"></div>#}
+                                                <form action="/ajax/media/alt" method="post" class="media-form" style="margin-top: 10px">
+                                                    <input type="hidden" name="id" value="{{ media.id }}">
+                                                    <input type="text" name="alt" placeholder="insert alt attribute"
+                                                           class="form-control" value="{{ media.alt }}" style="margin-bottom: 5px; margin-top: 10px">
+                                                    <input type="text" name="alt_fa" placeholder="تگ را وارد کنید"
+                                                           class="form-control" value="{{ media.alt_fa }}">
+                                                    <br>
+                                                    {#<div class="form-group">#}
+                                                    <label for="sel1" class="col-sm-3 control-label">وضعیت نمایش:</label>
+                                                    <select class="form-control col-sm-6" name="status">
+                                                        <option value="{{ media.status }}">{{ media.status }}</option>
+                                                        <option value="نمایش">نمایش</option>
+                                                        <option value="عدم نمایش">عدم نمایش</option>
+                                                    </select>
+                                                    {#</div>#}
+                                                    <input type="submit" id="submit"
+                                                           class="btn btn-success btn-block" value="ذخیره" style="margin-top: -7px">
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                !oops not found
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block script %}
+
+
+    <script>
+        function openLanguage(evt, language) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(language).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+    <script>
+
+        $(function () {
+            var hash = window.location.hash;
+//            alert(window.location.hash);
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+
+    </script>
+
+    <script>
+        $(function () {
+            var url = window.location.href;
+            var activeTab = url.substring(url.indexOf("#") + 1);
+//            $(".tab-pane").removeClass("active in");
+            $("#" + activeTab).addClass("active in");
+            $('a[href="#' + activeTab + '"]').tab('show')
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+
+{% block title %}Novinniroo{% endblock %}
+
+{% block body %}
+    {{ include('_templates/header.html') }}
+
+
+    <section class="slid-show">
+        <div class="container">
+            <div class="slide-show-container" style="display: none">
+                <div class="slider multiple-items" style="height: 360px">
+                    {% for slide in slideshow | reverse %}
+                        <div>
+                            <div class="row">
+                                <div class="slid-image col-sm-7 ">
+                                    <img src="{{ url('uploads') }}/{{ slide.file }}" class="img-responsive">
+                                </div>
+                                <div class="slide-text col-sm-5 col-xs-12">
+                                    <div class="slide-title">{{ slide.title }}</div>
+                                    <div class="slide-paragraph">{{ slide.description }}</div>
+                                    <div class="slide-link"><a href="#">INDUSTRIAL PROCESS SOLUTIONS </a><i
+                                                class="fa fa-angle-double-right"></i></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="services-image">
+                        <!--<img src="/images/poultry.png" alt="">-->
+                        <i class="{{ elements.service_card_1.icon }}"></i>
+                    </div>
+                    <div class="services-title">{{ elements.service_card_1.title }}</div>
+                    <div class="services-sub">{{ elements.service_card_1.description }}</div>
+                    <div class="services-more"><a href="{{ elements.service_card_1.title }}">Read More ...</a></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="services-image">
+                        <!--<img src="/images/poultry.png" alt="">-->
+                        <i class="{{ elements.service_card_2.icon }}"></i>
+                    </div>
+                    <div class="services-title">{{ elements.service_card_2.title }}</div>
+                    <div class="services-sub">{{ elements.service_card_2.description }}</div>
+                    <div class="services-more"><a href="{{ elements.service_card_2.title }}">Read More ...</a></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="services-image">
+                        <!--<img src="/images/poultry.png" alt="">-->
+                        <i class="{{ elements.service_card_3.icon }}"></i>
+                    </div>
+                    <div class="services-title">{{ elements.service_card_3.title }}</div>
+                    <div class="services-sub">{{ elements.service_card_3.description }}</div>
+                    <div class="services-more"><a href="{{ elements.service_card_3.title }}">Read More ...</a></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="services-image">
+                        <!--<img src="/images/poultry.png" alt="">-->
+                        <i class="{{ elements.service_card_4.icon }}"></i>
+                    </div>
+                    <div class="services-title">{{ elements.service_card_4.title }}</div>
+                    <div class="services-sub">{{ elements.service_card_4.description }}</div>
+                    <div class="services-more"><a href="{{ elements.service_card_4.title }}">Read More ...</a></div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="why-novin">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-xs-12">
+                    <div class="why-title">{{ elements.middel_section.title }}</div>
+                    <div class="why-sub">{{ elements.middel_section.description }}</div>
+                    <div class="why-more"><a href="{{ elements.middel_section.link }}">Read More...</a></div>
+                </div>
+                <div class="col-sm-9 hidden-xs">
+                    <img class="why-image img-responsive"
+                         src="{{ url('uploads') }}/{{ elements.middel_section.image }}">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="customers">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    {% for customer in customers %}
+                        <div class="col-sm-2 col-xs-3">
+                            <div class="customers-image">
+                                <img src="{{ url('uploads') }}/{{ customer.logo }}" alt="">
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <div class="customers-title">{{ elements.customer_text.title }}</div>
+                    <div class="customers-sub">{{ elements.customer_text.description }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ include('_templates/footer.html') }}
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('.multiple-items').slick({
+            autoplay: true,
+            dots: true,
+            infinite: true,
+            speed: 900,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            arrows: false,
+            fade: true
+        });
+        $('.slide-show-container').show()
+    </script>
+
+{% endblock %}
